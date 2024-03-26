@@ -11,7 +11,7 @@
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
-#  timezone               :string           default("UTC")
+#  timezone               :string
 #  username               :citext
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
@@ -27,4 +27,6 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :own_calendars, class_name: "Calendar", foreign_key: "owner_id"
 end
