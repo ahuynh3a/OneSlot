@@ -11,16 +11,16 @@
 #  title           :string
 #  created_at      :datetime         not null
 #  updated_at      :datetime         not null
-#  calendar_id_id  :bigint           not null
+#  calendar_id     :bigint           not null
 #
 # Indexes
 #
-#  index_events_on_calendar_id_id  (calendar_id_id)
+#  index_events_on_calendar_id  (calendar_id)
 #
 # Foreign Keys
 #
-#  fk_rails_...  (calendar_id_id => calendars.id)
+#  fk_rails_...  (calendar_id => calendars.id)
 #
 class Event < ApplicationRecord
-  belongs_to :calendar_id, class_name: "Calendar"
+  belongs_to :calendar
 end

@@ -28,6 +28,8 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :own_calendars, class_name: "Calendar", foreign_key: "owner_id"
+  has_many :calendars, class_name: "Calendar", foreign_key: "owner_id"
   has_many :events, through: :calendars
+  has_many :memberships
+  has_many :groups, through: :memberships
 end
