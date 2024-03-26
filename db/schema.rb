@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_26_165551) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_26_171552) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -22,6 +22,19 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_26_165551) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["owner_id"], name: "index_calendars_on_owner_id"
+  end
+
+  create_table "events", force: :cascade do |t|
+    t.string "title"
+    t.text "description"
+    t.bigint "calendar_id_id", null: false
+    t.datetime "start_date_time"
+    t.datetime "end_date_time"
+    t.string "timezone"
+    t.string "location"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["calendar_id_id"], name: "index_events_on_calendar_id_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -43,4 +56,5 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_26_165551) do
   end
 
   add_foreign_key "calendars", "users", column: "owner_id"
+  add_foreign_key "events", "calendars", column: "calendar_id_id"
 end

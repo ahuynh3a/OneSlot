@@ -29,4 +29,5 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :own_calendars, class_name: "Calendar", foreign_key: "owner_id"
+  has_many :events, through: :calendars
 end
