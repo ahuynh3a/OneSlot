@@ -28,8 +28,7 @@ class Event < ApplicationRecord
 
   validate :start_must_be_before_end
 
-  validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name),
-                                    message: "%{value} is not a valid timezone" }
+  validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "%{value} is not a valid timezone" }
 
   private
 

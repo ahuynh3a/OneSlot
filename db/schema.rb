@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_28_001659) do
+ActiveRecord::Schema[7.0].define(version: 2024_03_28_142320) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "citext"
   enable_extension "plpgsql"
@@ -42,7 +42,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_28_001659) do
     t.text "description"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "members_count", default: 0
+    t.integer "memberships_count", default: 0
   end
 
   create_table "memberships", force: :cascade do |t|
