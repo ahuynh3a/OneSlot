@@ -27,9 +27,9 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :calendars, foreign_key: "owner_id"
+  has_many :calendars, foreign_key: "owner_id", dependent: :destroy
   has_many :events, through: :calendars
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
 
   validates :username, presence: true, uniqueness:true

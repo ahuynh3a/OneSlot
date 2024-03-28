@@ -19,5 +19,5 @@
 #
 class Calendar < ApplicationRecord
   belongs_to :owner, class_name: "User"
-  has_many :events
+  has_many :events, dependent: :destroy
 end
