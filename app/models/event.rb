@@ -30,6 +30,7 @@ class Event < ApplicationRecord
 
   validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "%{value} is not a valid timezone" }
 
+  scope :upcoming, -> { where("start_time > ?", Time.current).order(start_time: :asc) }
   private
 
   def start_must_be_before_end

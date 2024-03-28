@@ -13,5 +13,9 @@ class Group < ApplicationRecord
   has_many :memberships, dependent: :destroy
 
   validates :name, presence: true
+
+  scope :search, ->(query) {
+    where("LOWER(name) LIKE LOWER(:query) OR LOWER(description) LIKE LOWER(:query)", query: "%#{query}%")
+  }
   
 end
