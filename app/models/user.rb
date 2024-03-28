@@ -31,4 +31,8 @@ class User < ApplicationRecord
   has_many :events, through: :calendarsI
   has_many :memberships
   has_many :groups, through: :memberships
+
+  validates :username, presence: true, uniqueness:true
+  validates :name, presence: true
+  validates :timezone, inclusion { in: ActiveSupport::TimeZone.zones_map(&:name) }
 end
