@@ -10,5 +10,8 @@
 #  updated_at    :datetime         not null
 #
 class Group < ApplicationRecord
-  has_many :memberships
+  has_many :memberships, dependent: :destroy
+
+  validates :name, presence: true
+  
 end
