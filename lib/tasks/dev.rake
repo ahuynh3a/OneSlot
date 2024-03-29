@@ -43,11 +43,11 @@ unless Rails.env.production?
       Calendar.all.each do |calendar|
         rand(1..3).times do
           calendar.events.create(
-            title: Faker::Restaurant.name,
+            name: Faker::Restaurant.name,
             description: Faker::Restaurant.review,
             location: Faker::Address.city,
-            start_date_time: Faker::Time.between(from: DateTime.parse("2024-02-01"), to: DateTime.parse("2024-02-25"), format: :default),
-            end_date_time: Faker::Time.between(from: DateTime.parse("2024-03-01"), to: DateTime.parse("2024-03-28"), format: :default),
+            start_time: Faker::Time.between(from: DateTime.parse("2024-02-01"), to: DateTime.parse("2024-02-25"), format: :default),
+            end_time: Faker::Time.between(from: DateTime.parse("2024-03-01"), to: DateTime.parse("2024-03-28"), format: :default),
             timezone: timezones.sample,
           )
         end

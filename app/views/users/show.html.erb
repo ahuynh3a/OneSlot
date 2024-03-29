@@ -6,6 +6,13 @@
 Calendar
 </h2>
 
-<%= month_calendar do |date| %>
-  <%= date %>
+<%= month_calendar events: @events do |date, events| %>
+  <div>
+    <%= date %>
+    <% events.each do |event| %>
+      <div>
+        <%= event.name %>
+      </div>
+    <% end %>
+  </div>
 <% end %>
