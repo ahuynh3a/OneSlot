@@ -13,6 +13,9 @@ unless Rails.env.production?
 
    desc "Add sample data"
    task sample_data: :environment do
+
+  timezones = ActiveSupport::TimeZone.all.map(&:name)
+
     #create users
 
     names = ["sally", "jordan", "alexander", "anna", "christina"]
@@ -22,7 +25,7 @@ unless Rails.env.production?
         username: name,
         name: name,
         password: "password",
-        timezone: "UTC",
+        timezone: timezones.sample
       )
     end
 
@@ -37,17 +40,20 @@ unless Rails.env.production?
 
 
     #create events
-    Calendar.all.each do |calendar|
-      calendar.events.create(
-        title:Faker::Restaurant.name,
-        description:Faker::Restaurant.review,
-        location: Faker::Address.city,
-        start_date_time:Faker::Date.between(from: '2024-02-01', to: '2024-02-25'),
-        end_date_time:Faker::Date.between(from: '2024-03-01', to: '2024-03-28'),
-        timezone:"UTC"
-      )
-    end
+    
 
+    Calendar.all.each do |calendar|
+    rand(1..3).times do
+     calendar.events.create(
+       title: Faker::Restaurant.name,
+       description: Faker::Restaurant.review,
+       location: Faker::Address.city,
+       start_date_time: Faker::Date.between(from: '2024-02-01', to: '2024-02-25'),
+        end_date_time: Faker::Date.between(from: '2024-03-01', to: '2024-03-28'),
+        timezone: timezones.sample
+       )
+     end
+    end
 
 
     #create groups
