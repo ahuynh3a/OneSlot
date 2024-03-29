@@ -1,5 +1,6 @@
 Rails.application.routes.draw do
-  root "users#dashboard"
+  root "landing_pages#landing"
+
 
   devise_for :users
 
@@ -7,4 +8,6 @@ Rails.application.routes.draw do
   resources :memberships
   resources :events
   resources :calendars
+
+  get "/:username" => "users#show", as: :user
 end
