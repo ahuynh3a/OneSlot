@@ -7,12 +7,14 @@ Calendar
 </h2>
 
 <%= month_calendar events: @events do |date, events| %>
-  <div>
-    <%= date %>
-    <% events.each do |event| %>
-      <div>
-        <%= event.name %>
-      </div>
-    <% end %>
+  <div class="day">
+    <div class="date"><%= date.day %></div>
+    <div class="events">
+      <% events.each do |event| %>
+        <div class="event">
+          <%= event.name %>
+        </div>
+      <% end %>
+    </div>
   </div>
 <% end %>
