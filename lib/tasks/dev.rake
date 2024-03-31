@@ -17,14 +17,15 @@ unless Rails.env.production?
       timezones = ActiveSupport::TimeZone.all.map(&:name)
     
       # Create users
-      names = ["sally", "jordan", "alexander", "anna", "christina"]
-      users = names.map do |name|
+      names = ["Sally Sanders", "Jordan Childs", "Alexander Huynh", "Anna Huynh", "Christina Nguyen"]
+      users = names.map do |full_name|
+        first_name = full_name.split(" ").first
         User.create!(
-          email: "#{name}@example.com",
-          username: name,
-          name: name,
+          email: "#{first_name.downcase}@example.com",
+          username: "#{first_name.downcase}#{rand(100..999)}",
+          name: full_name, # Use the full name here
           password: "password",
-          timezone: timezones.sample,
+          timezone: timezones.sample, # Assuming `timezones` is defined elsewhere
         )
       end
     
@@ -52,14 +53,6 @@ unless Rails.env.production?
         group.update(memberships_count: group.memberships.count)
       end
     
-      # Create calendars for each user with a title reflecting the user's name
-      users.each do |user|
-        Calendar.create!(
-          title: "#{user.name.capitalize}'s Calendar", # Modify this line to format the title as you wanted
-          description: Faker::Movies::HarryPotter.quote,
-          owner: user,
-        )
-      end
     
       # Create events for each calendar with realistic details
       Calendar.all.each do |calendar|
