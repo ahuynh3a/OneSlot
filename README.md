@@ -1,54 +1,50 @@
-# Rails Template
+# Unislot - v1
+Unislot(v1) simplifies scheduling for groups of people by enabling users to pinpoint mutual free times. In this first version, users input their own schedules into a personal calendar within the app. Users can create and join groups, where they can share their schedules and access a calendar that consolidates other members of the group's schedules. This feature effortlessly highlights shared available slots, streamlining the process of finding an ideal meeting time for all group members.
 
-This is a base Ruby on Rails repository configured for learning with Codespaces (and Gitpod).
+## Table of Contents
+- Features
+- Limitations
+- Technologies Used
+- Installation
 
-- Ruby version: `3.2.1`
-- Rails version: `7.0.4.3`
+## Main Feature
+
+### Add schedule to personal calendar
+Once users sign up, they can start adding their schedule to their personal calendar by clicking new event.
+### Create Group
+Users can create a group and add other users.
+### View Consolidated Calendar
+Once a group is established, every user in the group will be  able to see a consolidated calendar.
+## Limitations
+
+Version 1 of the app comes with a number of constraints. A notable limitation is the automatic consolidation of a user's schedule upon being added to a group, without an opt-in choice. A key stretch goal for future updates is to enhance privacy by introducing a feature that enables users to decide whether they wish to join a group upon invitation. This will ensure users have control over sharing their schedule with group members.
+
+## Technologies Used
+- Rails 7
+- Bootstrap 5
+  
+## Installation
+To install and run, please use the following commands:
+```
+bundle install
+rails db:create
+rails db:migrate
+bin/dev
+
+```
 
 
-We've added additional Ruby gems and other software that aren't automatically available in a new Rails app.
 
-### Additional gems:
 
-- [`appdev_support`](https://github.com/firstdraft/appdev_support)
-- [`annotate`](https://github.com/ctran/annotate_models)
-- [`awesome_print`](https://github.com/awesome-print/awesome_print)
-- [`better_errors`](https://github.com/BetterErrors/better_errors)
-- [`binding_of_caller`](https://github.com/banister/binding_of_caller)
-- [`dotenv-rails`](https://github.com/bkeepers/dotenv)
-- [`draft_generators`](https://github.com/firstdraft/draft_generators/)
-- [`draft_matchers`](https://github.com/jelaniwoods/draft_matchers/)
-- [`devise`](https://github.com/heartcombo/devise)
-- [`faker`](https://github.com/faker-ruby/faker)
-- [`grade_runner`](https://github.com/firstdraft/grade_runner/)
-- [`htmlbeautifier`](https://github.com/threedaymonk/htmlbeautifier/)
-- [`http`](https://github.com/httprb/http)
-- [`pry_rails`](https://github.com/pry/pry-rails)
-- [`rails_db`](https://github.com/igorkasyanchuk/rails_db)
-- [`rails-erd`](https://github.com/voormedia/rails-erd)
-- [`rspec-html-matchers`](https://github.com/kucaahbe/rspec-html-matchers)
-- [`rspec-rails`](https://github.com/rspec/rspec-rails)
-- [`rufo`](https://github.com/ruby-formatter/rufo)
-- [`specs_to_readme`](https://github.com/firstdraft/specs_to_readme)
-- [`table_print`](https://github.com/arches/table_print)
-- [`web_git`](https://github.com/firstdraft/web_git)
-- [`webmock`](https://github.com/bblimke/webmock)
 
-### Additional software:
-- OS Ubuntu 20.04.5 LTS
-- Chromedriver
-- Fly.io's `flyctl`
-- Google Chrome (headless browser)
-- Graphviz
-- Heroku 
-- Node JS 18
-- NPM 8.19.3
-- Parity
-- Postgresql 12
-- Redis
-- Yarn
 
-### VS Code extensions:
-- aliariff.vscode-erb-beautify
-- mbessey.vscode-rufo
-- vortizhe.simple-ruby-erb
+
+
+
+
+
+
+
+
+
+
