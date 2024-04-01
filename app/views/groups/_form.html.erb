@@ -21,6 +21,11 @@
     <%= form.text_area :description %>
   </div>
 
+<div>
+  <%= form.label :user_ids, "Select Members" %>
+  <%= form.collection_select :user_ids, User.all, :id, :name, {}, {multiple: true} %>
+</div>
+
   <div>
     <%= form.submit %>
   </div>
