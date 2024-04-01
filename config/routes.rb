@@ -9,5 +9,10 @@ Rails.application.routes.draw do
   resources :events
   resources :calendars
 
-  get "/:username" => "users#show", as: :user
+  get ":username/calendar" => "users#calendar", as: :user_calendar
+  get ":username/events" => "users#events", as: :user_events
+  get ":username/groups" => "users#groups", as: :user_groups
+
+
+  get ":username" => "users#show", as: :user
 end
