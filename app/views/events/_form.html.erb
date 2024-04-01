@@ -22,11 +22,6 @@
   </div>
 
   <div>
-    <%= form.label :calendar_id, style: "display: block" %>
-    <%= form.text_field :calendar_id %>
-  </div>
-
-  <div>
     <%= form.label :start_time, style: "display: block" %>
     <%= form.datetime_field :start_time %>
   </div>
@@ -38,9 +33,9 @@
 
   <div>
     <%= form.label :timezone, style: "display: block" %>
-    <%= form.text_field :timezone %>
+    <%= form.time_zone_select :timezone, ActiveSupport::TimeZone.all, {}, { class: 'form-control' } %>
   </div>
-
+  
   <div>
     <%= form.label :location, style: "display: block" %>
     <%= form.text_field :location %>
