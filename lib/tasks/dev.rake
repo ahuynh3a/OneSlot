@@ -56,12 +56,14 @@ unless Rails.env.production?
     
       # Create events for each calendar with realistic details
       Calendar.all.each do |calendar|
-        rand(1..3).times do # Each calendar gets 1 to 3 events
-          # Realistic start time and duration
+        number_of_events = rand(10..20) # Let's create a random number of events per calendar
+
+        number_of_events.times do
           start_day = Faker::Date.between(from: Date.today.beginning_of_month, to: Date.today.end_of_month)
-          start_hour = rand(8..20) # Assuming events happen between 8 AM and 8 PM
+          start_hour = rand(8..20) # Events happen between 8 AM and 8 PM
           start_minute = [0, 15, 30, 45].sample
           start_time = DateTime.new(start_day.year, start_day.month, start_day.day, start_hour, start_minute, 0)
+      
           duration = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240].sample
           end_time = start_time + duration.minutes
     
