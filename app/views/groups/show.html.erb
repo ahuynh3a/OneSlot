@@ -20,10 +20,17 @@
 
 <ul>
  <% @group.users.each do |user| %>
-    <li><%= user.name %> </li>
+    <li>
+      <%= user.name %>
+      <%= button_to 'Remove', 
+                    group_membership_path(group_id: @group.id, id: user.memberships.find_by(group: @group).id),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+    </li>
   <% end %>
 </ul>
 
+<%= render 'memberships/form', membership: @group.memberships.build, group: @group %>
 
 
 <div>
