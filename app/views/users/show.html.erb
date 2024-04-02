@@ -3,24 +3,13 @@
     <h1>
       <%= @user.username %>
     </h1>
-
-    <ul class="nav nav-pills nav-justified">
-      <li class="nav-item">
-         <%= link_to "Calendar", user_path(@user.username), class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-         <%= link_to "Upcoming Events", user_events_path(@user.username), class: "nav-link" %>
-      </li>
-      <li class="nav-item">
-         <%= link_to "Groups", user_groups_path(@user.username), class: "nav-link" %>
-      </li>
-    </ul>
   </div>
 </div>
 
 <h2>
-Calendar
+Your Calendar
 </h2>
+<%= link_to "Add an event", new_event_path %>
 
 <%= month_calendar events: @events do |date, events| %>
   <div class="day">
@@ -28,11 +17,10 @@ Calendar
     <div class="events">
       <% events.sort_by(&:start_time).each do |event| %>
         <div class="event">
-  <%= link_to "#{event.name} - #{event.start_time.strftime("%I:%M %p")} to #{event.end_time.strftime("%I:%M %p")}", event_path(event) %>
+          <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
+          <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%I:%M %p")} to #{end_time_in_user_zone.strftime("%I:%M %p")}", event_path(event) %>
         </div>
       <% end %>
     </div>
   </div>
 <% end %>
-
-<%= link_to "Add an event", new_event_path %>
