@@ -11,7 +11,7 @@ class UsersController < ApplicationController
 
   def events
     @user = User.find_by!(username: params.fetch(:username))
-    @events = @user.events.where('start_time > ?', Time.current).order(:start_time)
+    @events = @user.events.where('start_time > ?', Time.current.in_time_zone(@user.timezone)).order(:start_time)
   end
 
   def groups

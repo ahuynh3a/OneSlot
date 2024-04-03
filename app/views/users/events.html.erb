@@ -1,12 +1,13 @@
-<h1>
-Upcoming Events
-</h1>
+<h1>Upcoming Events</h1>
 
 <div id="events">
   <% @events.each do |event| %>
-    <%= render event %>
-    <p>
+    <div class="event">
+      <h2><%= event.name %></h2>
+      <% start_time, end_time = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
+      <p>Starts at: <%= start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
+      <p>Ends at: <%= end_time.strftime("%B %d, %Y at %I:%M %p") %></p>
       <%= link_to "Show this event", event_path(event) %>
-    </p>
+    </div>
   <% end %>
 </div>
