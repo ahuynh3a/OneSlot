@@ -8,11 +8,14 @@ class MembershipsController < ApplicationController
 
   # GET /memberships/1 or /memberships/1.json
   def show
+    @group = Group.find(params[:group_id])
+    @membership = Membership.find(params[:id]) 
   end
 
   # GET /memberships/new
   def new
-    @membership = Membership.new
+    @group = Group.find(params[:group_id])
+    @membership = @group.memberships.build  
   end
 
   # GET /memberships/1/edit
@@ -21,18 +24,27 @@ class MembershipsController < ApplicationController
 
   # POST /memberships or /memberships.json
   def create
-    @membership = Membership.new(membership_params)
-
+    @group = Group.find(params[:group_id])
+    existing_membership = @group.memberships.find_by(user_id: membership_params[:user_id])
+  
     respond_to do |format|
-      if @membership.save
-        format.html { redirect_to membership_url(@membership), notice: "Membership was successfully created." }
-        format.json { render :show, status: :created, location: @membership }
+      if existing_membership
+        format.html { redirect_to group_path(@group), notice: 'Member already exists in the group.' }
+        format.json { render json: {error: 'Member already exists in the group'}, status: :unprocessable_entity }
       else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @membership.errors, status: :unprocessable_entity }
+        @membership = @group.memberships.build(membership_params)
+        
+        if @membership.save
+          format.html { redirect_to group_path(@group), notice: 'Membership was successfully created.' }
+          format.json { render :show, status: :created, location: @membership }
+        else
+          format.html { render :new, status: :unprocessable_entity }
+          format.json { render json: @membership.errors, status: :unprocessable_entity }
+        end
       end
     end
   end
+  
 
   # PATCH/PUT /memberships/1 or /memberships/1.json
   def update
@@ -49,13 +61,15 @@ class MembershipsController < ApplicationController
 
   # DELETE /memberships/1 or /memberships/1.json
   def destroy
+    @group = Group.find(params[:group_id])
+    @membership = @group.memberships.find(params[:id])
     @membership.destroy
-
     respond_to do |format|
-      format.html { redirect_to memberships_url, notice: "Membership was successfully destroyed." }
+      format.html { redirect_to group_path(@group), notice: 'Membership was successfully removed.' }
       format.json { head :no_content }
     end
   end
+  
 
   private
     # Use callbacks to share common setup or constraints between actions.

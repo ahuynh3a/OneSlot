@@ -23,7 +23,7 @@
 #
 class Event < ApplicationRecord
   belongs_to :calendar
-
+  
   validates :name, :start_time, :end_time, :calendar_id, :timezone, presence: true
 
   validate :start_must_be_before_end

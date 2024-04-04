@@ -1,6 +1,36 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @group %>
+
+<%= month_calendar events: @events do |date, events| %>
+  <div class="day">
+    <div class="date"><%= date.day %></div>
+    <div class="events">
+      <% events.sort_by(&:start_time).each do |event| %>
+        <div class="event">
+          <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
+          <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%B %d, %Y at %I:%M %p")} to #{end_time_in_user_zone.strftime("%B %d, %Y at %I:%M %p")}", event_path(event) %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+<% end %>
+
+
+<h2>Members in this group </h2>
+
+<ul>
+ <% @group.users.each do |user| %>
+    <li>
+      <%= user.name %>
+      <%= button_to 'Remove', 
+                    group_membership_path(group_id: @group.id, id: user.memberships.find_by(group: @group).id),
+                    method: :delete,
+                    data: { confirm: 'Are you sure?' } %>
+    </li>
+  <% end %>
+</ul>
+
+<%= render 'memberships/form', membership: @group.memberships.build, group: @group %>
+
 
 <div>
   <%= link_to "Edit this group", edit_group_path(@group) %> |
