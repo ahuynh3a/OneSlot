@@ -12,8 +12,8 @@
   <% end %>
 
   <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.label :name, style: "display: block" %>
+    <%= form.text_field :name %>
   </div>
 
   <div>
@@ -22,25 +22,21 @@
   </div>
 
   <div>
-    <%= form.label :calenda_id, style: "display: block" %>
-    <%= form.text_field :calendar_id %>
+    <%= form.label :start_time, style: "display: block" %>
+    <%= form.datetime_field :start_time %>
   </div>
 
   <div>
-    <%= form.label :start_date_time, style: "display: block" %>
-    <%= form.datetime_field :start_date_time %>
-  </div>
-
-  <div>
-    <%= form.label :end_date_time, style: "display: block" %>
-    <%= form.datetime_field :end_date_time %>
+    <%= form.label :end_time, style: "display: block" %>
+    <%= form.datetime_field :end_time %>
   </div>
 
   <div>
     <%= form.label :timezone, style: "display: block" %>
-    <%= form.text_field :timezone %>
+    <%= form.time_zone_select :timezone, ActiveSupport::TimeZone.all, {}, { class: 'form-control' } %>
+    
   </div>
-
+  
   <div>
     <%= form.label :location, style: "display: block" %>
     <%= form.text_field :location %>

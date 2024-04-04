@@ -1,10 +1,10 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @membership %>
 
 <div>
-  <%= link_to "Edit this membership", edit_membership_path(@membership) %> |
-  <%= link_to "Back to memberships", memberships_path %>
+  <%= link_to "Edit this membership", edit_group_membership_path(@group, @membership) %> |
+  <%= link_to 'Back to Memberships', group_memberships_path(@group) %>
 
-  <%= button_to "Destroy this membership", @membership, method: :delete %>
+  <%= button_to "Destroy this membership",
+              group_membership_path(@group, @membership),
+              method: :delete %>
 </div>
