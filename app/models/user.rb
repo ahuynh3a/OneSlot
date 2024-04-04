@@ -6,7 +6,6 @@
 #  email                  :citext           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string
-#  profile_image          :string
 #  remember_created_at    :datetime
 #  reset_password_sent_at :datetime
 #  reset_password_token   :string
@@ -27,12 +26,22 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  has_one_attached :profile_picture
+
   has_many :calendars, foreign_key: "owner_id", dependent: :destroy
   has_many :events, through: :calendars
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
 
+  after_create :create_default_calendar
+
   validates :username, presence: true, uniqueness:true
   validates :name, presence: true
   validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "%{value} is not a valid timezone" }
+
+  private
+  
+  def create_default_calendar
+    self.calendars.create(title: "#{self.name.capitalize}'s Calendar")
+  end
 end

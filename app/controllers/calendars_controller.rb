@@ -22,6 +22,7 @@ class CalendarsController < ApplicationController
   # POST /calendars or /calendars.json
   def create
     @calendar = Calendar.new(calendar_params)
+    @calendar.owner = current_user
 
     respond_to do |format|
       if @calendar.save

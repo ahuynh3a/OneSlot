@@ -12,4 +12,79 @@
  *
  *= require_tree .
  *= require_self
+  *= require calendar
  */
+
+ html * {
+  font-family: 'Roboto', sans-serif;
+}
+
+ .roboto {
+  font-family: 'Roboto', sans-serif;
+}
+
+.div-with-full-vh {
+  width: 100vw;
+  height: 100vh;
+}
+/* colors */
+
+.bg-main{
+  background-color:#F9F9F9;
+}
+
+.bg-white {
+  background-color:#FFFFFF;
+}
+
+.bg-orange{
+  background-color:#FF8B5E;
+}
+
+.bg-cream{
+  background-color: #F3F1EB ;
+}
+
+.bg-black{
+  background-color: #000000 ;
+}
+
+.bg-beige{
+  background-color: #EDE2D9 ;
+}
+
+
+
+/* font color */
+.text-color-white{
+  color:white
+}
+
+.landing-page-title {
+  font-size: 200px;
+}
+
+/* button color */
+.custom-btn{
+  background-color:#F9F9F9; 
+  border-color: #FF8B5E;
+}
+
+.custom-btn:hover {
+  background-color: #FFBE91; /* Light orange color on hover */
+  border-color: #FFBE91; /* Adjust the border color to match if necessary */
+}
+
+/*image*/
+
+.custom-img-max {
+  max-width: 100%; /* Ensures responsiveness */
+  height: auto; /* Maintains aspect ratio */
+  max-height: 500px; /* Example: Adjusts the maximum height */
+}
+
+
+.nav-icon {
+  margin-right: 8px; 
+  color: #FF8B5E;
+}
