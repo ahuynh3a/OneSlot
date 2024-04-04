@@ -23,7 +23,7 @@ default: &default
 
 development:
   <<: *default
-  database: unislot_development
+  database: oneslot_development
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
@@ -59,7 +59,7 @@ development:
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: unislot_test
+  database: oneslot_test
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
@@ -85,6 +85,6 @@ test:
 #
 production:
   <<: *default
-  database: unislot_production
-  username: unislot
-  password: <%= ENV["UNISLOT_DATABASE_PASSWORD"] %>
+  database: oneslot_production
+  username: oneslot
+  password: <%= ENV["ONESLOT_DATABASE_PASSWORD"] %>
