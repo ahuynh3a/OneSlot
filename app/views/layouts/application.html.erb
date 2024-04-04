@@ -6,15 +6,32 @@
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <%= render partial: "shared/cdn_assets" %>
+    <script src="https://kit.fontawesome.com/836e98d2c1.js" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap" rel="stylesheet">
+
+    <%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
-    <div>
-        <p class="notice"><%= notice %></p>
-        <p class="alert"><%= alert %></p>
-    </div>
+  <body class= "bg-main">
+    <%= render partial: "shared/navbar" %>
+
+    <% if notice.present? %>
+      <%= render partial: "shared/flash", locals: { message: notice, css_class: "success" } %>
+    <% end %>
+
+    <% if alert.present? %>
+      <%= render partial: "shared/flash", locals: { message: alert, css_class: "danger" } %>
+    <% end %>
+
     <%= yield %>
+
   </body>
 </html>

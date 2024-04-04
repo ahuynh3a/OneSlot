@@ -1,0 +1,12 @@
+<h1> Your Groups</h1>
+
+<div id="groups">
+  <% @groups.each do |group| %>
+    <%= render group %>
+    <p>
+      <%= link_to "Show this group", group %>
+    </p>
+  <% end %>
+</div> 
+
+<%= link_to "Create a new group", new_group_path %>

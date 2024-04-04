@@ -21,11 +21,13 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    @event = Event.new(event_params)
+    default_calendar = current_user.calendars.first
+
+    @event = default_calendar.events.build(event_params)
 
     respond_to do |format|
       if @event.save
-        format.html { redirect_to event_url(@event), notice: "Event was successfully created." }
+        format.html { redirect_to user_path(username: current_user.username), notice: "Event was successfully created." }
         format.json { render :show, status: :created, location: @event }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -57,6 +59,7 @@ class EventsController < ApplicationController
     end
   end
 
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_event
@@ -65,6 +68,6 @@ class EventsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def event_params
-      params.require(:event).permit(:title, :description, :calendar_id, :start_date_time, :end_date_time, :timezone, :location)
+      params.require(:event).permit(:name, :description, :start_time, :end_time, :timezone, :location)
     end
 end

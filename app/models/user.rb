@@ -33,7 +33,15 @@ class User < ApplicationRecord
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
 
+  after_create :create_default_calendar
+
   validates :username, presence: true, uniqueness:true
   validates :name, presence: true
   validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "%{value} is not a valid timezone" }
+
+  private
+  
+  def create_default_calendar
+    self.calendars.create(title: "#{self.name.capitalize}'s Calendar")
+  end
 end

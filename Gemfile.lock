@@ -346,6 +346,8 @@ GEM
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
       websocket (~> 1.0)
+    simple_calendar (3.0.2)
+      rails (>= 6.1)
     simple_form (5.2.0)
       actionpack (>= 5.2)
       activemodel (>= 5.2)
@@ -451,6 +453,7 @@ DEPENDENCIES
   rspec-rails (~> 6.0.0)
   rufo
   selenium-webdriver
+  simple_calendar
   specs_to_readme
   sprockets-rails
   sqlite3 (~> 1.4)
