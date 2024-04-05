@@ -46,13 +46,18 @@
 </div>
 
 
+
+
+
+
 <!--Div 3 --->
 <div class="bg-main d-flex justify-content-center align-items-center div-with-full-vh" id="hero">
+<div>
   <div class="container">
     <h2 class="text-center mb-4 mt-5 roboto">OneSlot in action</h2> <!-- Adjusted margin-bottom to mt-5 -->
     <div class="row justify-content-center">
       <div class="col">
-        <div class="card mb-2 bg-main"> <!-- Removed border style -->
+        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
           <%= image_tag("family-get-together_post.jpeg", alt: "First review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
           <div class="card-body text-center">
             <p class="card-text roboto">"My dad's birthday celebration was a huge success! Seeing the joy on his face when he walked into the surprise party was priceless. OneSlot helped us overcome our busy schedules and create unforgettable memories with our loved ones." - Rachel T., Boston"</p>
@@ -60,7 +65,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card mb-2 bg-main"> <!-- Removed border style -->
+        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
           <%= image_tag("studygroup.jpeg", alt: "Second review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
           <div class="card-body text-center">
             <p class="card-text roboto">"I love how intuitive OneSlot is to use. Whether it's organizing a family gathering or a study session with classmates, the app simplifies the process and saves us valuable time." - Emily R., Chicago</p>
@@ -68,7 +73,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card mb-2 bg-main;"> <!-- Removed border style -->
+        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
           <%= image_tag("friends2.jpeg", alt: "Third review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
           <div class="card-body text-center">
             <p class="card-text roboto">"OneSlot has been a game-changer for our friend group. No more endless group chats trying to coordinate schedules. Now, we can easily find a time that works for everyone to hang out!" - Sarah M., New York</p>
@@ -76,7 +81,7 @@
         </div>
       </div>
       <div class="col">
-        <div class="card mb-2 bg-main"> <!-- Removed border style -->
+        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
           <%= image_tag("bookclub.jpeg", alt: "fourth review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
           <div class="card-body text-center">
             <p class="card-text roboto">"OneSlot has made scheduling our monthly book club meetings a breeze. No more confusion or double bookings. Plus, the interface is so user-friendly!" - David W., Toronto</p>
@@ -84,5 +89,6 @@
         </div>
       </div>
     </div>
+  </div>
   </div>
 </div>
