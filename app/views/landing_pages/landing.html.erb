@@ -13,8 +13,9 @@
   </div>
 </div>
 
+<!-- Calendar Image Layered Ontop --->
+
 <div style="position: relative; z-index: 2; width: 100%; display: flex; justify-content: center;">
-  <!-- Adjust the width (and optionally height) and add border-radius to make the image corners curved -->
   <%= image_tag("Calendar.jpg", alt: "Features and Benefits", class: "img-fluid", style: "position: absolute; top: -190px; width: 600px; border-radius: 20px;") %>
 </div>
 
@@ -46,15 +47,11 @@
 </div>
 
 
+<!--Review Cards Layered Ontop--->
 
-
-
-
-<!--Div 3 --->
-<div class="bg-main d-flex justify-content-center align-items-center div-with-full-vh" id="hero">
-<div>
-  <div class="container">
-    <h2 class="text-center mb-4 mt-5 roboto">OneSlot in action</h2> <!-- Adjusted margin-bottom to mt-5 -->
+<div style="position: relative; width: 100%; display: flex; justify-content: center; z-index: 2;">
+  <div class="container" style="position: absolute; top: -100px; width: 100%;">
+    <h2 class="text-center mb-4 mt-5 roboto">OneSlot In Action</h2> <!-- Adjusted margin-bottom to mt-5 -->
     <div class="row justify-content-center">
       <div class="col">
         <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
@@ -91,4 +88,28 @@
     </div>
   </div>
   </div>
+
+
+<!--Div 3 --->
+<div class="bg-main d-flex justify-content-center align-items-center div-with-full-vh" id="hero">
+  
+</div>
+
+
+<!--Div 4--->
+
+
+<div class="bg-orange d-flex justify-content-center align-items-center flex-column" id="hero" style="padding: 20px; color: white; font-family: 'Roboto', sans-serif;">
+  <h3 style="color: white; roboto">Connect With Us</h3>
+  <p>
+    <!-- Example Social Media Links -->
+    <a href="https://facebook.com/yourpage" style="margin-right: 10px; color: white; text-decoration: none;roboto;">Facebook</a>
+    <a href="https://twitter.com/yourhandle" style="margin-right: 10px; color: white; text-decoration: none;roboto">Twitter</a>
+    <a href="https://instagram.com/yourprofile" style="margin-right: 10px; color: white; text-decoration: none;">Instagram</a>
+    <!-- Additional social media links as needed -->
+  </p>
+  <p>
+    <!-- Contact Link -->
+    <a href="/contact" style="color: white; text-decoration: none;">Contact Us</a>
+  </p>
 </div>
