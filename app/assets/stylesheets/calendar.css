@@ -1,5 +1,6 @@
 .simple-calendar {
   width: 100%;
+  margin: 0 auto; /* This centers the calendar horizontally */
   table-layout: fixed;
 }
 
@@ -10,10 +11,13 @@
   position: relative;
 }
 
+
 .simple-calendar td {
-  height: 100px; /* Initial height, but let's enable scrolling within this container */
-  overflow: hidden; /* Initially hide overflow, will adjust for a scrollable area */
+  height: 100px;
+  overflow: hidden; 
+  background-color: white;
 }
+
 
 /* Introduce a scrollable container for events within each day */
 .simple-calendar .events-container {
@@ -26,21 +30,70 @@
   padding: 2px 5px;
 }
 
-.event {
-  display: block;
-  padding: 2px; /* Reduced padding makes the box thinner */
-  margin: 2px 0; /* Reduced vertical margin between events */
-  background-color: #f0f0f0;
-  border-radius: 4px;
-  font-size: 0.75em; /* Smaller font size for event names */
-  text-align: center;
-  box-sizing: border-box;
-  white-space: normal; /* Allows text wrapping */
-  overflow: hidden;
-  text-overflow: ellipsis;
-}
-
 .simple-calendar th {
   background-color: #eee;
+  text-align: center;
+}
+
+
+/*responsiveness*/
+ 
+/* Base styles optimized for mobile */
+.simple-calendar .day, .simple-calendar .date, .simple-calendar .events-indicator .dot {
+  font-size: 0.75rem;
+  padding: 5px;
+}
+
+/* Larger screens: Adjust styles as needed */
+@media (min-width: 768px) {
+  /* If you want to increase padding for larger screens */
+  .simple-calendar .day {
+    padding: 10px; /* Increased padding on larger screens */
+  }
+
+  /* If you want to adjust font sizes for larger screens */
+  .simple-calendar .date {
+    font-size: 1rem; /* Increased font size for better readability on larger screens */
+  }
+}
+
+.events-indicator {
+  position: absolute;
+  bottom: -5px; /* Distance from the bottom of the .day cell */
+  right: 5px; /* Distance from the right of the .day cell */
+  z-index: 1; /* Ensures the indicator is above other content in the day cell */
+}
+
+.events-indicator .dot {
+  color: grey; /* Example color: Bootstrap primary blue */
+  font-size: 24px; /* Large enough to be easily noticeable */
+  display: block; /* Ensure it's on its own line */
+  text-align: center; /* Center within its container */
+}
+
+/* Adjusting the dot size might not be necessary unless you specifically want to for design reasons */
+.simple-calendar .events-indicator .dot {
+  font-size: 1.5rem; /* Optionally adjust the size of the dot for larger screens */
+}
+
+
+.day {
+  transition: background-color 0.3s ease-in-out; /* Smooth transition for hover effect */
+  cursor: pointer; /* Changes cursor to pointer to indicate clickable */
+}
+
+.day:hover {
+  background-color: #FFBE91; /* Light grey (or any color you prefer) background on hover */
+}
+
+
+.current-day .date {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  line-height: 22px;
+  border-radius: 50%; /* Creates the circle shape */
+  background-color: #FFBE91; /* Example: blue background */
+  color: white; /* White text */
   text-align: center;
 }
