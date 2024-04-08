@@ -83,8 +83,17 @@
   max-height: 500px; /* Example: Adjusts the maximum height */
 }
 
+.image-fixed-height {
+  height: 200px; /* Adjust this value based on your needs */
+  object-fit: cover;
+  width: 100%; /* Ensures responsiveness */
+}
+
 
 .nav-icon {
   margin-right: 8px; 
   color: #FF8B5E;
 }
+
+body { padding-top: 80px; }
+

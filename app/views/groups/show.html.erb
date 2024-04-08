@@ -1,18 +1,43 @@
 <%= render @group %>
 
 <%= month_calendar events: @events do |date, events| %>
-  <div class="day">
-    <div class="date"><%= date.day %></div>
-    <div class="events">
-      <% events.sort_by(&:start_time).each do |event| %>
-        <div class="event">
-          <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
-          <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%B %d, %Y at %I:%M %p")} to #{end_time_in_user_zone.strftime("%B %d, %Y at %I:%M %p")}", event_path(event) %>
+  <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.strftime('%Y-%m-%d') %>">
+    <div class="date">
+    <%= date.day %>
+    </div>
+    <% unless events.empty? %>
+      <div class="events-indicator">
+        <span class="dot">&#9679;</span>
+      </div>
+  </div>
+    <% end %>
+
+
+    <!-- Modal structure for the day, updated for Bootstrap 5 -->
+    <div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>">Events on <%= date.strftime('%B %d, %Y') %></h5>
+            <!-- Updated close button for Bootstrap 5 -->
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% events.each do |event| %>
+              <p><%= event.name %></p>
+              <!-- Display event details here -->
+            <% end %>
+          </div>
+          <div class="modal-footer">
+            <!-- Ensure data-bs-dismiss attribute for Bootstrap 5 -->
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
-      <% end %>
+      </div>
     </div>
   </div>
 <% end %>
+
 
 
 <h2>Members in this group </h2>

@@ -7,6 +7,7 @@ Rails.application.routes.draw do
   resources :groups do
     resources :memberships, only: [:show, :new, :create, :edit, :update, :destroy]
   end
+  
   resources :events
   resources :calendars
 
