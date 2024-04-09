@@ -12,32 +12,28 @@
   </div>
     <% end %>
 
+  <!-- Modal structure for the day, updated for Bootstrap 5 -->
+<div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>">Events and Available Times on <%= date.strftime('%B %d, %Y') %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
 
-    <!-- Modal structure for the day, updated for Bootstrap 5 -->
-    <div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>">Events on <%= date.strftime('%B %d, %Y') %></h5>
-            <!-- Updated close button for Bootstrap 5 -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <% events.each do |event| %>
-              <p><%= event.name %></p>
-              <!-- Display event details here -->
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <!-- Ensure data-bs-dismiss attribute for Bootstrap 5 -->
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
+        <h6>Available Time Slots:</h6>
+        <% available_times_for(date, events).each do |time_range| %>
+          <p><%= time_range %></p>
+        <% end %>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
+</div>
 <% end %>
-
 
 
 <h2>Members in this group </h2>
