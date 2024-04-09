@@ -27,11 +27,19 @@ module ApplicationHelper
     merge_consecutive_slots(available_slots)
   end
 
-
   def merge_consecutive_slots(slots)
     merged = slots.slice_when { |i, j| j != i + 15.minutes }.to_a
     merged.map do |range|
-      "#{range.first.strftime("%I:%M %p")} - #{(range.last + 15.minutes).strftime("%I:%M %p")}"
+      start_time = range.first.strftime("%I:%M %p")
+      # Adjust the end time of the range to account for end of day representation
+      end_time = range.last + 15.minutes
+      # Check if end_time rounds up to the next day and adjust to "11:59 PM" if so
+      end_time_str = if end_time.strftime("%I:%M %p") == "12:00 AM"
+                       "11:59 PM"
+                     else
+                       end_time.strftime("%I:%M %p")
+                     end
+      "#{start_time} - #{end_time_str}"
     end
   end
 end
