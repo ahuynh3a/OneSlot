@@ -47,7 +47,7 @@
 
 
 
-<h2 style="font-size: 24px;" >Members in this group </h2>
+<p style="padding-top: 20px;"><strong>Members in this group</strong></p>
 
 <ul class="user-list">
   <% @group.users.each do |user| %>
@@ -68,13 +68,10 @@
 </ul>
 
 
-<%= render 'memberships/form', membership: @group.memberships.build, group: @group %>
 
-
-<div>
+<div style="margin-top: 20px;">
   <%= link_to "Edit this group", edit_group_path(@group) %> |
   <%= link_to "Back to groups", groups_path %>
 
-  <%= button_to "Destroy this group", @group, method: :delete %>
-</div>
+  <%= button_to "Destroy this group", @group, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>
