@@ -1,26 +1,52 @@
-<div class="row">
-  <div class="col md-6">
-    <h1>
-      <%= @user.username %>
-    </h1>
+<div class="container mx-auto px-4" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+<div class="row justify-content-center">
+    <div class="col-md-6 text-center"> 
+      <%= image_tag(@user.profile_picture)%>
+    <h2 style="font-size: 24px; margin-bottom: 30px;">
+      <%= @user.name.split.first.capitalize %>'s Calendar
+          <%= image_tag user.profile_picture if user.profile_picture.attached? %>
+
+    </h2>
   </div>
 </div>
 
-<h2>
-Your Calendar
-</h2>
-<%= link_to "Add an event", new_event_path %>
-
+<div style="padding-top: 20px;">
 <%= month_calendar events: @events do |date, events| %>
-  <div class="day">
-    <div class="date"><%= date.day %></div>
-    <div class="events">
-      <% events.sort_by(&:start_time).each do |event| %>
-        <div class="event">
-          <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
-          <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%I:%M %p")} to #{end_time_in_user_zone.strftime("%I:%M %p")}", event_path(event) %>
+  <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.strftime('%Y-%m-%d') %>">
+    <div class="date">
+      <%= date.day %>
+    </div>
+    <% unless events.empty? %>
+      <div class="events-indicator">
+        <span class="dot">&#9679;</span>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>"><%= date.strftime('%B %d, %Y') %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
-      <% end %>
+        <div class="modal-body">
+          <% if events.empty? %>
+            <p>No events planned for today.</p>
+          <% else %>
+            <% events.each do |event| %>
+              <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
+              <div class="event">
+                <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%I:%M %p")} to #{end_time_in_user_zone.strftime("%I:%M %p")}", event_path(event) %>
+              </div>
+            <% end %>
+          <% end %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
     </div>
   </div>
 <% end %>
+</div>

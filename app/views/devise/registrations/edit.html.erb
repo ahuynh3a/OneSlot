@@ -4,6 +4,8 @@
   <%= f.error_notification %>
 
   <div class="form-inputs">
+  <%= f.input :profile_picture, as: :file %>
+
     <%= f.input :email, required: true, autofocus: true %>
 
     <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
@@ -25,6 +27,7 @@
             hint: "We need your current password to confirm your changes",
             required: true,
             input_html: { autocomplete: "current-password", placeholder: 'Current Password' } %>
+            
   </div>
 
   <div class="form-actions">

@@ -1,5 +1,7 @@
+<div class="container mx-auto px-4" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
 <%= render @group %>
 
+<div style="padding-top: 20px;">
 <%= month_calendar events: @events do |date, events| %>
   <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.strftime('%Y-%m-%d') %>">
     <div class="date">
@@ -10,7 +12,8 @@
         <span class="dot">&#9679;</span>
       </div>
   </div>
-    <% end %>
+    <% end %>  
+  </div>
 
 <div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -44,7 +47,7 @@
 
 
 
-<h2>Members in this group </h2>
+<h2 style="font-size: 24px;" >Members in this group </h2>
 
 <ul>
  <% @group.users.each do |user| %>
@@ -66,4 +69,5 @@
   <%= link_to "Back to groups", groups_path %>
 
   <%= button_to "Destroy this group", @group, method: :delete %>
+</div>
 </div>

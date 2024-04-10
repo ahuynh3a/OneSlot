@@ -18,5 +18,4 @@ class UsersController < ApplicationController
     @user = User.find_by!(username: params.fetch(:username))
     @groups = @user.groups
   end
-
 end

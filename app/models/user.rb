@@ -40,7 +40,7 @@ class User < ApplicationRecord
   validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "%{value} is not a valid timezone" }
 
   private
-  
+
   def create_default_calendar
     self.calendars.create(title: "#{self.name.capitalize}'s Calendar")
   end
