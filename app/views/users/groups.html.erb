@@ -1,12 +1,16 @@
-<h1> Your Groups</h1>
-
-<div id="groups">
+<div class="content-wrapper">
+  <h1>Your Groups</h1>
+<div id="groups" class="d-flex flex-wrap justify-content-center">
   <% @groups.each do |group| %>
-    <%= render group %>
-    <p>
-      <%= link_to "Show this group", group %>
-    </p>
+    <div class="card m-2" style="width: 18rem;">
+   
+      <div class="card-body">
+        <h5 class="card-title"><%= group.name %></h5> <!-- Group name as title -->
+        <p class="card-text"><%= group.description %></p> <!-- Group description -->
+        <%= link_to "Show this group", group_path(group), class: "btn btn-primary" %> <!-- Link to show group -->
+      </div>
+    </div>
   <% end %>
-</div> 
-
-<%= link_to "Create a new group", new_group_path %>
+</div>
+  <%= link_to "Create a new group", new_group_path, class: "btn btn-success" %>
+</div>

@@ -29,12 +29,12 @@
         </div>
         <div class="modal-body">
           <% if events.empty? %>
-            <p>No events planned for today.</p>
+            <p style="font-size: 15px;">No events planned for today.</p>
           <% else %>
             <% events.each do |event| %>
               <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
-              <div class="event">
-                <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%I:%M %p")} to #{end_time_in_user_zone.strftime("%I:%M %p")}", event_path(event) %>
+              <div class="d-grid gap-2">
+                <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%I:%M %p")} to #{end_time_in_user_zone.strftime("%I:%M %p")}", event_path(event), class: " modal-button", role: "button" %>
               </div>
             <% end %>
           <% end %>
