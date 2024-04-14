@@ -2,27 +2,37 @@
   width: 100%;
   margin: 0 auto; 
   table-layout: fixed;
+  font-family: Roboto, sans-serif;
 }
 
 .simple-calendar th, .simple-calendar td {
   width: 14.28%; 
   vertical-align: top;
-  border: 1px solid #ddd;
+  border: none;
   position: relative;
 }
 
-
 .simple-calendar td {
-  height: 100px;
-  overflow: hidden; 
-  background-color: white;
+   border-bottom: 1px solid #ddd; /* Removes the border around each day */
+    background: white; /* Removes any background color styling */
+    text-align: center; /* Centers the day number in the cell */
+    padding: 10px; /* Adjust padding as needed */
 }
-
 
 .simple-calendar th {
-  background-color: #eee;
+  background-color: white;
   text-align: center;
+  border-bottom: 1px solid #ddd; /* Removes the border around each day */
 }
+
+.table {
+  width: 100%;
+  border-collapse: separate; 
+  border-spacing: 0;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
 
 
 
@@ -54,14 +64,15 @@
 
 .events-indicator {
   position: absolute;
-  bottom: -5px; 
-  right: 5px; 
-  z-index: 1; 
+  top: 55%; /* Position it just below the bottom edge of the .date element */
+  left: 50%; /* Start the dot from the center of the .day element */
+  transform: translateX(-50%); /* This shifts the dot back by half its own width to truly center it */
+  width: 100%; /* Ensures the container spans the full width of .day for consistent centering */
 }
 
 .events-indicator .dot {
   color: #FFBE91;
-  font-size: 30px;
+  font-size: 18px;
   display: block; 
   text-align: center;
 }
@@ -76,4 +87,36 @@
   background-color: #FF8B5E;
   color: white; 
   text-align: center;
+}
+
+
+
+/*month-calendar-link - nav*/
+
+.month-calendar-nav-container{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.month-calendar-link-container {
+  display: flex;
+}
+
+.month-calendar-link {
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #FFBE91;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  border: 1px solid #FFBE91;
+  transition: background-color 0.3s ease;
+  font-size: 12px;
+}
+
+.month-calendar-link:hover {
+  background-color: #FF8B5E;
 }

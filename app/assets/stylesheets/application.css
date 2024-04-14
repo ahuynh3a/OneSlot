@@ -128,6 +128,15 @@ body { padding-top: 80px; }
   margin: 0 auto; /* Centers the image */
 }
 
+.navbar-profile-picture{
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  object-fit: cover;
+  display: block; /* Ensures the image does not have inline whitespace */
+  margin: 0 auto; /* Centers the image */
+}
+
 .user-name {
   display: block; /* Treat the name as block element to allow margin */
 }
