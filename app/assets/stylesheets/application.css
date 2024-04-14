@@ -78,6 +78,19 @@ html * {
   /* Adjust the border color to match if necessary */
 }
 
+.submit-btn{
+  background-color: #FFBE91;
+  border-color: #FFBE91;
+}
+
+
+.submit-btn:hover {
+  background-color: #FF8B5E;
+  /* Light orange color on hover */
+  border-color: #FF8B5E;
+  /* Adjust the border color to match if necessary */
+}
+
 /*image*/
 
 .custom-img-max {
@@ -362,4 +375,13 @@ body {
 
 .create-group-caption {
   font-size: 15px;
+}
+
+
+
+
+.navbar .navbar-nav .dropdown-menu .dropdown-item:active,
+.navbar .navbar-nav .dropdown-menu .dropdown-item:focus {
+    background-color: #FFBE91; 
+    color: white;
 }
