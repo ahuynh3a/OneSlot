@@ -16,6 +16,6 @@ class UsersController < ApplicationController
 
   def groups
     @user = User.find_by!(username: params.fetch(:username))
-    @groups = @user.groups
+    @groups = @user.groups.includes(:users)
   end
 end

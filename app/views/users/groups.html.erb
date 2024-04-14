@@ -1,16 +1,31 @@
-<div class="content-wrapper">
-  <h1>Your Groups</h1>
-<div id="groups" class="d-flex flex-wrap justify-content-center">
-  <% @groups.each do |group| %>
-    <div class="card m-2" style="width: 18rem;">
-   
-      <div class="card-body">
-        <h5 class="card-title"><%= group.name %></h5> <!-- Group name as title -->
-        <p class="card-text"><%= group.description %></p> <!-- Group description -->
-        <%= link_to "Show this group", group_path(group), class: "btn btn-primary" %> <!-- Link to show group -->
-      </div>
-    </div>
-  <% end %>
+<div class="container">
+  <h2>Your Groups</h2>
+  <hr>
+  <div class="row" id="groups">
+    <% @groups.each do |group| %>
+      <%= link_to group_path(group), class: "group-card-link" do %>
+        <div class="group-card">
+          <div class="group-card-body">
+            <h5 class="group-card-title"><%= group.name %></h5>
+            <p class="group-card-text"><%= group.description %></p>
+            <div class="group-members">
+              <% group.users.each do |user| %>
+                <% if user.profile_picture.attached? %>
+                  <%= image_tag user.profile_picture, class: "group-profile-picture" %>
+                <% else %>
+                  <%= image_tag 'default_profile.png', class: 'group-profile-picture', size: "30x30" %> <!-- Placeholder if no image -->
+                <% end %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% end %>
+   <div class="create-group-button-container">
+      <%= link_to new_group_path, class: "create-group-button" do %>
+        <span class="plus-symbol">+</span>
+        <div class="create-group-caption">Create a new group</div>
+      <% end %>
 </div>
-  <%= link_to "Create a new group", new_group_path, class: "btn btn-success" %>
+  </div>
 </div>
