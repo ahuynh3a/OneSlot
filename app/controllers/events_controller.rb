@@ -21,9 +21,7 @@ class EventsController < ApplicationController
 
   # POST /events or /events.json
   def create
-    default_calendar = current_user.calendars.first
-
-    @event = default_calendar.events.build(event_params)
+    @event = Event.create_in_default_calendar(current_user, event_params)
 
     respond_to do |format|
       if @event.save

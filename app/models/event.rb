@@ -22,22 +22,23 @@
 #  fk_rails_...  (calendar_id => calendars.id)
 #
 class Event < ApplicationRecord
-  belongs_to :calendar
+  
+    # Constants
+    VALID_TIMEZONES = ActiveSupport::TimeZone.all.map(&:name)
 
-  validates :name, :start_time, :end_time, :calendar_id, :timezone, presence: true
+    belongs_to :calendar
 
-  validate :start_must_be_before_end
+    # Validations
+    validates :name, :start_time, :end_time, :calendar_id, :timezone, presence: true
+    validate :start_must_be_before_end
+    validates :timezone, inclusion: { in: VALID_TIMEZONES, message: "%{value} is not a valid timezone" }
 
-  validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "%{value} is not a valid timezone" }
+    # Scopes
+    scope :upcoming, -> { where("start_time > ?", Time.current).order(start_time: :asc) }
 
-  scope :upcoming, -> { where("start_time > ?", Time.current).order(start_time: :asc) }
-  private
+    private
 
-  def start_must_be_before_end
-    return if start_time.blank? || end_time.blank?
-
-    if start_time >= end_time
-      errors.add(:end_time, "must be after the start date and time")
+    def start_must_be_before_end
+      errors.add(:end_time, "must be after the start date and time") if start_time >= end_time
     end
   end
-end

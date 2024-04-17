@@ -51,7 +51,7 @@ class CalendarsController < ApplicationController
   # DELETE /calendars/1 or /calendars/1.json
   def destroy
     @calendar.destroy
-
+    
     respond_to do |format|
       format.html { redirect_to calendars_url, notice: "Calendar was successfully destroyed." }
       format.json { head :no_content }
