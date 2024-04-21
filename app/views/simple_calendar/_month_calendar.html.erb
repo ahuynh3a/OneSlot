@@ -9,7 +9,7 @@
       <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view, class: "month-calendar-link" %>
    </div>
    <div class="month-calendar-link-container">
-      <%= link_to "Add an event", new_calendar_event_path(calendar_id:current_user.calendars.first.id), class: "month-calendar-link " %>
+      <%= link_to "Add an event", new_calendar_event_path(current_user.calendars.first), class: "month-calendar-link" %>
    </div>
 </nav>
 </div>
