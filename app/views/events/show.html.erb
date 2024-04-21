@@ -1,10 +1,6 @@
-<p style="color: green"><%= notice %></p>
-
-<%= render @event %>
-
-<div>
-  <%= link_to "Edit this event", edit_event_path(@event) %> |
-  <%= link_to "Back to events", user_events_path(username: current_user.username) %>
-
-  <%= button_to "Destroy this event", @event, method: :delete %>
+<div class="container mx-auto px-4" style="min-height: 100vh">
+  <%= render @event %>
+  <div style="display: flex; justify-content: center; align-items: center;">
+    <%= link_to "Back to Calendar", user_path(username: current_user.username), class:'btn submit-btn mt-3'%> 
+  </div>
 </div>

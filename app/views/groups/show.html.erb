@@ -1,5 +1,36 @@
-<%= render @group %>
+<div class="container mx-auto px-4" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
+<div class="card" style="border: none;border-radius: 20px;">
+  <div class="card-body">
+    <div class="d-flex justify-content-between align-items-center">
+  <h3><%= @group.name %></h3>
+  <%= link_to "...", edit_group_path(@group), class: "edit-group-btn" %>
+</div>
+    <p class="text-muted"><%= @group.description %></p>
+    <p style= "font-size: 15px"><strong>Members</strong></p>
+    
+<ul class="list-unstyled d-flex flex-wrap">
+  <% @group.users.each do |user| %>
+    <li class="user-item">
+      <div class="user-container">
+        <% if user.profile_picture.attached? %>
+          <%= image_tag user.profile_picture, class: 'profile-picture' %>
+        <% end %>
+        <div class="user-name" style="font-size: 11px;"><%= user.name %></div>
+      </div>
+    </li>
+  <% end %>
+    <li class="user-item">
+      <div class="add-member-container">
+    <%= link_to "+", new_group_membership_path(@group), class: "add-member-btn", title: "Add member" %>
+    <div class="user-name" style="font-size: 11px;">Add member</div>
+    </div>
+  </li>
+</ul>
+  </div>
+</div>
 
+
+<div style="padding-top: 20px;">
 <%= month_calendar events: @events do |date, events| %>
   <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.strftime('%Y-%m-%d') %>">
     <div class="date">
@@ -10,56 +41,35 @@
         <span class="dot">&#9679;</span>
       </div>
   </div>
-    <% end %>
+    <% end %>  
+  </div>
 
-
-    <!-- Modal structure for the day, updated for Bootstrap 5 -->
-    <div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>">Events on <%= date.strftime('%B %d, %Y') %></h5>
-            <!-- Updated close button for Bootstrap 5 -->
-            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-          </div>
-          <div class="modal-body">
-            <% events.each do |event| %>
-              <p><%= event.name %></p>
-              <!-- Display event details here -->
-            <% end %>
-          </div>
-          <div class="modal-footer">
-            <!-- Ensure data-bs-dismiss attribute for Bootstrap 5 -->
-            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-          </div>
-        </div>
+<div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>"><%= date.strftime('%B %d, %Y') %></h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
+     <div class="modal-body">
+  <% if events.empty? %>
+    <p style="font-size: 15px;">No one has events planned for today.</p>
+  <% else %>
+    <h6>Available Time Slots:</h6>
+    <% available_times = available_times_for(date, events) %>
+    <% if available_times.empty? %>
+      <p>No available time slots.</p>
+    <% else %>
+      <% available_times.each do |time_range| %>
+        <p class="time-slot"><%= time_range %></p>  <!-- Added class "time-slot" -->
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+<div class="modal-footer">
+  <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+</div>
     </div>
   </div>
-<% end %>
-
-
-
-<h2>Members in this group </h2>
-
-<ul>
- <% @group.users.each do |user| %>
-    <li>
-      <%= user.name %>
-      <%= button_to 'Remove', 
-                    group_membership_path(group_id: @group.id, id: user.memberships.find_by(group: @group).id),
-                    method: :delete,
-                    data: { confirm: 'Are you sure?' } %>
-    </li>
-  <% end %>
-</ul>
-
-<%= render 'memberships/form', membership: @group.memberships.build, group: @group %>
-
-
-<div>
-  <%= link_to "Edit this group", edit_group_path(@group) %> |
-  <%= link_to "Back to groups", groups_path %>
-
-  <%= button_to "Destroy this group", @group, method: :delete %>
 </div>
+<% end %>

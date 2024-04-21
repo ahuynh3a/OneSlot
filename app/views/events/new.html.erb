@@ -1,9 +1,12 @@
-<h1>New event</h1>
-
-<%= render "form", event: @event %>
-
-<br>
-
-<div>
-  <%= link_to "Back to events", events_path %>
+<div class="row justify-content-center align-items-center">
+  <div class="col-md-6">
+    <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 20px;">
+      <h1 style="font-size: 24px; flex-grow: 1;">New Event</h1>
+      <%= link_to "Back to Calendar", user_path(username: current_user.username),class: 'btn btn-secondary' %>
+    </div>
+    <hr>
+    <%= render "form", event: @event %>
+    <br>
+  </div>
+</div>
 </div>

@@ -1,37 +1,13 @@
-<h1>Editing group</h1>
-
-<%= form_with(model: @group, local: true) do |form| %>
-  <% if @group.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
-      <ul>
-        <% @group.errors.each do |error| %>
-          <li><%= error.full_message %></li>
-        <% end %>
-      </ul>
+<div class="container">
+  <div class="row justify-content-center align-items-center">
+    <div class="col-md-6">
+      <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 20px;">
+        <h1 style="font-size: 24px; flex-grow: 1;">Editing Group</h1>
+        <%= link_to "Back to group", group_path(@group), class: 'btn btn-secondary' %>
+      </div>
+      <hr>
+      <%= render "edit_form", group: @group %>
+      <br>
     </div>
-  <% end %>
-
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
   </div>
-
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
-  </div>
-
-
-  <div>
-    <%= form.submit %>
-  </div>
-<% end %>
-
-<br>
-
-<div>
-  <%= link_to "Show this group", @group %> |
-  <%= link_to "Back to groups", user_groups_path(username: current_user.username) %>
 </div>

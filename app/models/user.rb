@@ -21,26 +21,23 @@
 #  index_users_on_username              (username) UNIQUE
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
   has_one_attached :profile_picture
-
   has_many :calendars, foreign_key: "owner_id", dependent: :destroy
   has_many :events, through: :calendars
   has_many :memberships, dependent: :destroy
   has_many :groups, through: :memberships
 
-  after_create :create_default_calendar
-
   validates :username, presence: true, uniqueness:true
   validates :name, presence: true
   validates :timezone, inclusion: { in: ActiveSupport::TimeZone.all.map(&:name), message: "%{value} is not a valid timezone" }
 
+  after_create :create_default_calendar
+
   private
-  
+
   def create_default_calendar
     self.calendars.create(title: "#{self.name.capitalize}'s Calendar")
   end

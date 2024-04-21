@@ -1,73 +1,61 @@
 class EventsController < ApplicationController
-  before_action :set_event, only: %i[ show edit update destroy ]
+  before_action :set_calendar
+  before_action :set_event, only: [:show, :edit, :update, :destroy]
 
-  # GET /events or /events.json
+  # GET /calendars/:calendar_id/events
   def index
-    @events = Event.all
+    @events = @calendar.events
   end
 
-  # GET /events/1 or /events/1.json
+  # GET /calendars/:calendar_id/events/:id
   def show
   end
 
-  # GET /events/new
+  # GET /calendars/:calendar_id/events/new
   def new
-    @event = Event.new
+    @event = @calendar.events.new
   end
 
-  # GET /events/1/edit
+  # GET /calendars/:calendar_id/events/:id/edit
   def edit
   end
 
-  # POST /events or /events.json
+  # POST /calendars/:calendar_id/events
   def create
-    default_calendar = current_user.calendars.first
-
-    @event = default_calendar.events.build(event_params)
-
-    respond_to do |format|
-      if @event.save
-        format.html { redirect_to user_path(username: current_user.username), notice: "Event was successfully created." }
-        format.json { render :show, status: :created, location: @event }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    @event = @calendar.events.build(event_params)
+    if @event.save
+      redirect_to calendar_event_path(@calendar, @event), notice: "Event was successfully created."
+    else
+      render :new, status: :unprocessable_entity
     end
   end
 
-  # PATCH/PUT /events/1 or /events/1.json
+  # PATCH/PUT /calendars/:calendar_id/events/:id
   def update
-    respond_to do |format|
-      if @event.update(event_params)
-        format.html { redirect_to event_url(@event), notice: "Event was successfully updated." }
-        format.json { render :show, status: :ok, location: @event }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @event.errors, status: :unprocessable_entity }
-      end
+    if @event.update(event_params)
+      redirect_to calendar_event_path(@calendar, @event), notice: "Event was successfully updated."
+    else
+      render :edit, status: :unprocessable_entity
     end
   end
 
-  # DELETE /events/1 or /events/1.json
+  # DELETE /calendars/:calendar_id/events/:id
   def destroy
     @event.destroy
-
-    respond_to do |format|
-      format.html { redirect_to events_url, notice: "Event was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    redirect_to user_url(username: current_user.username), notice: "Event was successfully destroyed."
   end
 
-
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_event
-      @event = Event.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def event_params
-      params.require(:event).permit(:name, :description, :start_time, :end_time, :timezone, :location)
-    end
+  def set_calendar
+    @calendar = Calendar.find(params[:calendar_id])
+  end
+
+  def set_event
+    @event = @calendar.events.find(params[:id])
+  end
+
+  def event_params
+    params.require(:event).permit(:name, :description, :start_time, :end_time, :timezone, :location)
+  end
 end

@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @events = @group.member_events
+    @user_timezone = current_user.timezone
   end
 
   # GET /groups/new
@@ -57,7 +58,7 @@ class GroupsController < ApplicationController
     @group.destroy
 
     respond_to do |format|
-      format.html { redirect_to groups_url, notice: "Group was successfully destroyed." }
+      format.html { redirect_to user_groups_path(username: current_user.username), notice: "Group was successfully destroyed." }
       format.json { head :no_content }
     end
   end
