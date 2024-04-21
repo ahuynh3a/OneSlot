@@ -50,10 +50,6 @@ class Event < ApplicationRecord
     private
 
     def start_must_be_before_end
-      if start_time.nil? || end_time.nil?
-        errors.add(:base, "Start time and end time must both be present")
-      elsif start_time >= end_time
-        errors.add(:end_time, "must be after the start date and time")
-      end
+      errors.add(:end_time, "must be after the start date and time") if start_time >= end_time
     end
   end

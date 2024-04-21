@@ -42,7 +42,7 @@ class EventsController < ApplicationController
   # DELETE /calendars/:calendar_id/events/:id
   def destroy
     @event.destroy
-    redirect_to user_url(username: current_user.username), notice: "Event was successfully destroyed."
+    redirect_to user_events_url(username: current_user.username), notice: "Event was successfully destroyed."
   end
 
   private
