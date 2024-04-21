@@ -1,49 +1,69 @@
 <div class="container mx-auto px-4" style="min-height: 100vh; display: flex; flex-direction: column; justify-content: center;">
-<div class="row justify-content-center">
-    <div class=" text-center"> 
-    <p style="font-size: 35px; padding: 15px;">
-      <%= @user.name.split.first.capitalize %>'s Calendar
-    </p>
+  <div class="row justify-content-center">
+    <div class=" text-center">
+      <p style="font-size: 35px; padding: 15px;">
+        <%= @user.name.split.first.capitalize %>'s Calendar
+      </p>
+    </div>
   </div>
-</div>
-
 <div style="padding-top: 20px;">
-<%= month_calendar events: @events do |date, events| %>
-  <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.strftime('%Y-%m-%d') %>">
-    <div class="date">
-      <%= date.day %>
-    </div>
-    <% unless events.empty? %>
-      <div class="events-indicator">
-        <span class="dot">&#9679;</span>
+  <%= month_calendar events: @events do |date, events| %>
+    <div class="day" data-bs-toggle="modal" data-bs-target="#modal-<%= date.strftime('%Y-%m-%d') %>">
+      <div class="date">
+        <%= date.day %>
       </div>
-    <% end %>
-  </div>
-
-  <div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-      <div class="modal-content">
-        <div class="modal-header">
-          <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>"><%= date.strftime('%B %d, %Y') %></h5>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body">
-          <% if events.empty? %>
-            <p style="font-size: 15px;">No events planned for today.</p>
-          <% else %>
-            <% events.each do |event| %>
-              <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
-              <div class="d-grid gap-2">
-                <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%I:%M %p")} to #{end_time_in_user_zone.strftime("%I:%M %p")}", event_path(event), class: " modal-button", role: "button" %>
-              </div>
+      <% unless events.empty? %>
+        <% if events.any? { |event| event.multi_day? } %>
+          <div class="events-indicator">
+            <span class="bar"></span>
+          </div>
+        <% else %>
+          <div class="events-indicator">
+            <span class="dot">&#9679;</span>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+    
+    <div class="modal fade" id="modal-<%= date.strftime('%Y-%m-%d') %>" tabindex="-1" aria-labelledby="modalLabel<%= date.strftime('%Y-%m-%d') %>" aria-hidden="true">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="modalLabel<%= date.strftime('%Y-%m-%d') %>"><%= date.strftime('%B %d, %Y') %></h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <% if events.empty? %>
+              <p style="font-size: 15px;">No events planned for today.</p>
+            <% else %>
+              <% events.each do |event| %>
+                <% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
+                <div class="d-grid gap-2">
+                  <% if event.start_time.to_date != event.end_time.to_date %>
+                    <%= link_to calendar_event_path(event.calendar, event), class: "modal-button", role: "button" do %>
+                      <div><strong><%= event.name %></strong></div>
+                      <div>
+                        <strong>Start:</strong> <%= start_time_in_user_zone.strftime("%b %d, %l:%M %p") %>
+                      </div>
+                      <div>
+                        <strong>End:</strong> <%= end_time_in_user_zone.strftime("%b %d, %l:%M %p") %>
+                      </div>
+                        <div>
+                        (Multi-day Event)
+                      </div>
+                    <% end %>
+                  <% else %>
+                    <%= link_to "#{event.name} - #{start_time_in_user_zone.strftime("%l:%M %p")} to #{end_time_in_user_zone.strftime("%l:%M %p")}", calendar_event_path(event.calendar, event), class: "modal-button", role: "button" %>
+                  <% end %>
+                </div>
+              <% end %>
             <% end %>
-          <% end %>
-        </div>
-        <div class="modal-footer">
-          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
+          <div class="modal-footer">
+            <button type of="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+          </div>
         </div>
       </div>
     </div>
-  </div>
-<% end %>
+  <% end %>
 </div>

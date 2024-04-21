@@ -1,10 +1,23 @@
-<h1>Editing event</h1>
 
-<%= render "form", event: @event %>
 
-<br>
+<div class="container">
+   <div class="row justify-content-center align-items-center">
+      <div class="col-md-6">
+         <div class="d-flex justify-content-between align-items-center" style="margin-bottom: 20px;">
 
-<div>
-  <%= link_to "Show this event", @event %> |
-  <%= link_to "Back to events", events_path %>
+
+  <h1 style="font-size: 24px; flex-grow: 1;">Edit Event</h1>
+
+  <%= link_to "Back to events", user_events_path(username: current_user.username), class: 'btn btn-secondary'%> 
 </div>
+<hr>
+
+<%= render "form", event: @event, calendar: @calendar %>
+  <br>
+      </div>
+   </div>
+</div>
+
+
+
+

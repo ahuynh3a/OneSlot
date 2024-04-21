@@ -121,3 +121,13 @@
   background-color: #FF8B5E;
 }
 
+.events-indicator .bar {
+  position: relative;
+  display: block;
+  width: calc(100% + 4px);
+  height: 8px;
+  background-color: #FFBE91;
+  border-radius: 5px;
+  margin-top: 10px;
+  margin-left: -2px;
+}

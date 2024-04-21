@@ -385,3 +385,57 @@ body {
     background-color: #FFBE91; 
     color: white;
 }
+
+/* upcoming-events */
+
+#upcoming-events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.upcoming-events-card {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 100%;
+  margin: 5px;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.upcoming-events-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.upcoming-events-link {
+  text-decoration: none;
+}
+
+.upcoming-events-card-title{
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 12px;
+  color:#343a40;
+}
+
+.upcoming-events-card-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  color: #343a40bf;
+  margin-bottom: 10px;
+}
+.upcoming-events-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}

@@ -13,7 +13,7 @@
                 <% if user.profile_picture.attached? %>
                   <%= image_tag user.profile_picture, class: "group-profile-picture" %>
                 <% else %>
-                  <%= image_tag 'default_profile.png', class: 'group-profile-picture', size: "30x30" %> <!-- Placeholder if no image -->
+                  <%= image_tag 'default_profile.png', class: 'group-profile-picture', size: "30x30" %>
                 <% end %>
               <% end %>
             </div>

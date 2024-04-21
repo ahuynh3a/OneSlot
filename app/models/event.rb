@@ -22,7 +22,7 @@
 #  fk_rails_...  (calendar_id => calendars.id)
 #
 class Event < ApplicationRecord
-  
+
     # Constants
     VALID_TIMEZONES = ActiveSupport::TimeZone.all.map(&:name)
 
@@ -35,7 +35,18 @@ class Event < ApplicationRecord
 
     # Scopes
     scope :upcoming, -> { where("start_time > ?", Time.current).order(start_time: :asc) }
+    scope :overlapping, ->(start_date, end_date) {
+      where("start_time <= ? AND end_time >= ?", end_date, start_date)
+    }
+    # Event.where(calendar_id: []).available_times_for()
+    #scope :available_times_for, ->(date) do
+      # TODO
+   # end
 
+   def multi_day?
+    # Assuming 'start_time' and 'end_time' are attributes of your event
+    (end_time.to_date - start_time.to_date).to_i > 0
+  end
     private
 
     def start_must_be_before_end

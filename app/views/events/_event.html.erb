@@ -1,32 +1,15 @@
-<div id="<%= dom_id event %>">
-  <p>
-    <strong>Name:</strong>
-    <%= event.name %>
-  </p>
+<% start_time_in_user_zone, end_time_in_user_zone = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
 
-  <p>
-    <strong>Description:</strong>
-    <%= event.description %>
-  </p>
-
-  <p>
-    <strong>Start date time:</strong>
-    <%= event.start_time %>
-  </p>
-
-  <p>
-    <strong>End date time:</strong>
-    <%= event.end_time %>
-  </p>
-
-  <p>
-    <strong>Timezone:</strong>
-    <%= event.timezone %>
-  </p>
-
-  <p>
-    <strong>Location:</strong>
-    <%= event.location %>
-  </p>
-
+<div id="<%= dom_id event %>" class="card" style="border: none; border-radius: 20px;">
+  <div class="card-body">
+      <div style="display: flex; justify-content: space-between; align-items: center;">
+      <h5 class="card-title" style="margin-bottom: 0;"><%= event.name %></h5>
+      <%= link_to "...", edit_calendar_event_path(@calendar, @event), class: "edit-group-btn" %>
+    </div>
+    <div class="card-subtitle mb-4 mt-4 text-muted">
+      <p class="mb-1"><strong>Start:</strong> <%= start_time_in_user_zone.strftime('%A, %b %e, %Y %l:%M %p') %></p>
+      <p><strong>End:</strong> <%= end_time_in_user_zone.strftime('%A, %b %e, %Y %l:%M %p') %></p>
+    </div>
+    <p class="card-text"><%= event.description %></p>
+  </div>
 </div>
