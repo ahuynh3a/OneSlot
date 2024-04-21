@@ -15,11 +15,11 @@
   *= require calendar
  */
 
- html * {
+html * {
   font-family: 'Roboto', sans-serif;
 }
 
- .roboto {
+.roboto {
   font-family: 'Roboto', sans-serif;
 }
 
@@ -27,37 +27,38 @@
   width: 100vw;
   height: 100vh;
 }
+
 /* colors */
 
-.bg-main{
-  background-color:#F9F9F9;
+.bg-main {
+  background-color: #F9F9F9;
 }
 
 .bg-white {
-  background-color:#FFFFFF;
+  background-color: #FFFFFF;
 }
 
-.bg-orange{
-  background-color:#FF8B5E;
+.bg-orange {
+  background-color: #FF8B5E;
 }
 
-.bg-cream{
-  background-color: #F3F1EB ;
+.bg-cream {
+  background-color: #F3F1EB;
 }
 
-.bg-black{
-  background-color: #000000 ;
+.bg-black {
+  background-color: #000000;
 }
 
-.bg-beige{
-  background-color: #EDE2D9 ;
+.bg-beige {
+  background-color: #EDE2D9;
 }
 
 
 
 /* font color */
-.text-color-white{
-  color:white
+.text-color-white {
+  color: white
 }
 
 .landing-page-title {
@@ -65,35 +66,376 @@
 }
 
 /* button color */
-.custom-btn{
-  background-color:#F9F9F9; 
+.custom-btn {
+  background-color: #F9F9F9;
   border-color: #FF8B5E;
 }
 
 .custom-btn:hover {
-  background-color: #FFBE91; /* Light orange color on hover */
-  border-color: #FFBE91; /* Adjust the border color to match if necessary */
+  background-color: #FFBE91;
+  /* Light orange color on hover */
+  border-color: #FFBE91;
+  /* Adjust the border color to match if necessary */
+}
+
+.submit-btn{
+  background-color: #FFBE91;
+  border-color: #FFBE91;
+}
+
+
+.submit-btn:hover {
+  background-color: #FF8B5E;
+  /* Light orange color on hover */
+  border-color: #FF8B5E;
+  /* Adjust the border color to match if necessary */
 }
 
 /*image*/
 
 .custom-img-max {
-  max-width: 100%; /* Ensures responsiveness */
-  height: auto; /* Maintains aspect ratio */
-  max-height: 500px; /* Example: Adjusts the maximum height */
+  max-width: 100%;
+  /* Ensures responsiveness */
+  height: auto;
+  /* Maintains aspect ratio */
+  max-height: 500px;
+  /* Example: Adjusts the maximum height */
 }
 
 .image-fixed-height {
-  height: 200px; /* Adjust this value based on your needs */
+  height: 200px;
+  /* Adjust this value based on your needs */
   object-fit: cover;
-  width: 100%; /* Ensures responsiveness */
+  width: 100%;
+  /* Ensures responsiveness */
 }
 
 
 .nav-icon {
-  margin-right: 8px; 
+  margin-right: 8px;
   color: #FF8B5E;
 }
 
-body { padding-top: 80px; }
+body {
+  padding-top: 80px;
+}
 
+
+/*user_list in group*/
+.user-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  white-space: nowrap;
+  overflow-x: auto;
+}
+
+.user-item {
+  display: inline-block;
+  position: relative;
+  margin-right: 10px;
+  text-align: center;
+  padding: 5px;
+}
+
+.user-container {
+  position: relative;
+  display: inline-block;
+  /* Contain the image and the remove button */
+}
+
+.profile-picture {
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  object-fit: cover;
+  display: block;
+  margin: 0 auto;
+}
+
+.navbar-profile-picture {
+  border-radius: 50%;
+  width: 23px;
+  height: 23px;
+  object-fit: cover;
+  display: block;
+  /* Ensures the image does not have inline whitespace */
+  margin: 0 auto;
+  /* Centers the image */
+}
+
+.user-name {
+  display: block;
+}
+
+.edit-group-btn {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+  background-color: transparent;
+  color: #6c757d;
+  border: 2px solid #6c757d;
+  border-radius: 50%;
+  cursor: pointer;
+  text-decoration: none;
+  overflow: hidden;
+  padding: 0;
+  line-height: 30px;
+}
+
+  .edit-group-btn:hover {
+    background-color: #6c757d;
+    color: white;
+  }
+
+  
+    /* adding members button */
+
+
+  .add-member-container {
+    display: flex; /* Enables flexbox for this container */
+    flex-direction: column; /* Stacks children vertically */
+
+    align-items: center; 
+  justify-content: center;
+  }
+  .add-member-btn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;  /* Match your existing profile picture size */
+    height: 50px; /* Match your existing profile picture size */
+    border-radius: 50%; /* Makes it a circle */
+    background-color: transparent; /* Bootstrap primary color, or choose your own */
+    border: 1px solid #6c757d;
+    color: #6c757d; /* Text color */
+    font-size: 24px; /* Adjust the size of the "+" as needed */
+    text-decoration: none; /* Removes underline from the link */
+    cursor: pointer; /* Indicates the button is clickable */
+  }
+  
+  .add-member-btn:hover {
+    background-color: #6c757d;
+    color: white;
+  }
+
+  .add-member-text {
+    font-size: 11px; /* Match the size used for user names */
+    margin-top: 5px; /* Space between the '+' button and the text */
+  }
+
+
+    /* Time slots */
+    .time-slot {
+      font-size: 15px; /* Increase font size */
+      transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
+    }
+    
+    .time-slot:hover {
+      transform: scale(1.1); /* Makes the time slot pop out */
+      color: #FF8B5E; /* Changes text color on hover */
+    }
+
+
+
+/*modal-button*/
+
+.modal-button{
+  margin-right: 10px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #FFBE91;
+  color: white;
+  text-decoration: none;
+  border-radius: 50px;
+  border: 1px solid #FFBE91;
+  transition: background-color 0.3s ease;
+  font-size: 15px;
+}
+
+
+.modal-button:hover {
+  background-color: #FF8B5E;
+}
+
+.content-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Centers content horizontally */
+  justify-content: center; /* Centers content vertically if possible */
+  min-height: 100vh; /* Full viewport height */
+  text-align: center; /* Centers text elements */
+}
+
+
+
+
+
+
+#groups {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.group-card {
+  display: flex;
+  flex-direction: column;
+  height: 300px;
+  width: 100%;  /* Adjust based on your layout needs */
+  margin: 1rem;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.group-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+}
+
+.group-card-link {
+  text-decoration: none; /* Removes the underline from links */
+  color: inherit; /* Inherits the color from the parent for consistency */
+}
+
+.group-card-title {
+  margin: 0; /* Adjust margin as needed */
+  white-space: wrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 12px;
+}
+
+.group-card-text {
+  display: block;  /* Block display for text control */
+  overflow: wrap;  /* Hides overflow to maintain the size */
+  text-overflow: ellipsis;  /* Adds ellipsis to truncated text */
+  white-space: clip;  /* Allows text wrapping */
+  font-size: 15px;
+  color: #6c757d;
+}
+
+.group-card-body {
+  padding: 1rem; /* Padding within each card */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between; /* Spreads out title and text */
+  flex-grow: 1;
+}
+
+
+.group-members {
+  margin-top: auto;  /* Pushes members to the bottom */
+  display: flex;
+  overflow-x: auto;  /* Allows horizontal scrolling for member images */
+  align-items: center;
+  padding: 5px 0;
+}
+
+.group-profile-picture {
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-right: 5px; /* Space between images */
+}
+
+
+
+.create-group-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 300px; 
+  height: 300px;
+  background-color: white;
+  border-radius: 15px;
+  text-decoration: none;
+  color: #6c757d; 
+  text-align: center;
+  margin-left: 20px;
+  margin: 1rem ;
+}
+
+.create-group-button:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+}
+
+.plus-symbol {
+  font-size: 50px;
+  margin-bottom: 5px;
+}
+
+.create-group-caption {
+  font-size: 15px;
+}
+
+
+
+
+.navbar .navbar-nav .dropdown-menu .dropdown-item:active,
+.navbar .navbar-nav .dropdown-menu .dropdown-item:focus {
+    background-color: #FFBE91; 
+    color: white;
+}
+
+/* upcoming-events */
+
+#upcoming-events {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.upcoming-events-card {
+  display: flex;
+  flex-direction: column;
+  height: 150px;
+  width: 100%;
+  margin: 5px;
+  background-color: white;
+  border-radius: 15px;
+  overflow: hidden;
+  transition: box-shadow 0.3s ease;
+}
+
+.upcoming-events-card:hover {
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.upcoming-events-link {
+  text-decoration: none;
+}
+
+.upcoming-events-card-title{
+  margin: 0;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 12px;
+  color:#343a40;
+}
+
+.upcoming-events-card-text {
+  display: block;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 15px;
+  color: #343a40bf;
+  margin-bottom: 10px;
+}
+.upcoming-events-card-body {
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  flex-grow: 1;
+}

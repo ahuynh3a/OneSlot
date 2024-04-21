@@ -10,6 +10,7 @@ class GroupsController < ApplicationController
   def show
     @group = Group.find(params[:id])
     @events = @group.member_events
+    @user_timezone = current_user.timezone
   end
 
   # GET /groups/new

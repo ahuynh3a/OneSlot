@@ -1,33 +1,31 @@
-<%= form_with(model: @group, local: true) do |form| %>
-  <% if group.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(group.errors.count, "error") %> prohibited this group from being saved:</h2>
-
+<%= form_with(model: @group, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <% if @group.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
       <ul>
-        <% group.errors.each do |error| %>
+        <% @group.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :name, style: "display: block" %>
-    <%= form.text_field :name %>
+  <div class="form-group">
+    <%= form.label :name %>
+    <%= form.text_field :name, class: 'form-control' %>
   </div>
 
-  <div>
-    <%= form.label :description, style: "display: block" %>
-    <%= form.text_area :description %>
+  <div class="form-group">
+    <%= form.label :description %>
+    <%= form.text_area :description, class: 'form-control' %>
   </div>
 
-<div>
-  <%= form.label :user_ids, "Select Members" %>
-  <%= form.collection_select :user_ids, User.all, :id, :name, {}, {multiple: true} %>
-</div>
+  <div class="form-group">
+    <%= form.label :user_ids, "Select Members" %>
+    <%= form.collection_select :user_ids, User.all, :id, :name, {}, {multiple: true, class: 'form-control'} %>
+  </div>
 
-
-  <div>
-    <%= form.submit %>
+  <div class="form-group" style= "margin-top: 20px">
+    <%= form.submit 'Submit', class: 'btn submit-btn' %>
   </div>
 <% end %>

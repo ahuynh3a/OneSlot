@@ -14,8 +14,10 @@ unless Rails.env.production?
 
     desc "Add sample data"
     task sample_data: :environment do
+      require 'faker'
+
       timezones = ActiveSupport::TimeZone.all.map(&:name)
-    
+
       # Create users
       names = ["Sally Sanders", "Jordan Childs", "Alexander Huynh", "Anna Huynh", "Christina Nguyen"]
       users = names.map do |full_name|
@@ -28,15 +30,16 @@ unless Rails.env.production?
           timezone: timezones.sample, # Assuming `timezones` is defined elsewhere
         )
       end
-    
+
       # Create groups
       groups = 5.times.map do
         Group.create!(
           name: Faker::Hobby.activity,
-          description: Faker::Lorem.sentence(word_count: 100),
+          description: "A community of enthusiasts passionate about #{Faker::Hobby.activity}. Here, we share experiences, tips, and organize meet-ups to actively engage in our hobby. Whether you're a beginner or a seasoned expert, there's something for everyone to learn and explore.",
         )
       end
-    
+
+
       # Create memberships
       users.each do |user|
         user_groups = groups.sample(rand(1..3)) # Each user joins 1 to 3 groups randomly
@@ -47,13 +50,13 @@ unless Rails.env.production?
           )
         end
       end
-    
+
       # Update group membership counts
       Group.find_each do |group|
         group.update(memberships_count: group.memberships.count)
       end
-    
-    
+
+
       # Create events for each calendar with realistic details
       Calendar.all.each do |calendar|
         number_of_events = rand(10..20) # Let's create a random number of events per calendar
@@ -63,10 +66,10 @@ unless Rails.env.production?
           start_hour = rand(8..20) # Events happen between 8 AM and 8 PM
           start_minute = [0, 15, 30, 45].sample
           start_time = DateTime.new(start_day.year, start_day.month, start_day.day, start_hour, start_minute, 0)
-      
+
           duration = [30, 45, 60, 75, 90, 105, 120, 135, 150, 165, 180, 195, 210, 225, 240].sample
           end_time = start_time + duration.minutes
-    
+
           # Varied event themes
           event_themes = [
             { name: "Team Meeting", description: "Discuss project updates and tasks" },
@@ -77,7 +80,7 @@ unless Rails.env.production?
             { name: "Tech Talk: Industry Trends", description: "Exploring the latest trends in technology" }
           ]
           event_theme = event_themes.sample
-    
+
           calendar.events.create!(
             name: event_theme[:name],
             description: event_theme[:description],
@@ -86,6 +89,9 @@ unless Rails.env.production?
             end_time: end_time,
             timezone: timezones.sample,
           )
+
+        #attatching avatars to each user
+
         end
       end
     end

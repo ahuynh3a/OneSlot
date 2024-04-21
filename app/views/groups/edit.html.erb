@@ -34,4 +34,5 @@
 <div>
   <%= link_to "Show this group", @group %> |
   <%= link_to "Back to groups", user_groups_path(username: current_user.username) %>
+   <%= button_to "Destroy this group", @group, method: :delete, data: { confirm: "Are you sure?" } %>
 </div>

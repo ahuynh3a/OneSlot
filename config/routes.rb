@@ -7,9 +7,11 @@ Rails.application.routes.draw do
   resources :groups do
     resources :memberships, only: [:show, :new, :create, :edit, :update, :destroy]
   end
-  
-  resources :events
-  resources :calendars
+
+  resources :calendars do
+    resources :events, only: [:show, :new, :create, :edit, :update, :destroy]
+  end
+ 
 
   get ":username/calendar" => "users#calendar", as: :user_calendar
   get ":username/events" => "users#events", as: :user_events

@@ -1,13 +1,18 @@
 <div class="simple-calendar">
   <div class="calendar-heading">
-    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
+    <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title" style="font-size: 30px; text-secondary"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
 
-    <nav>
-      <%= link_to t('simple_calendar.previous', default: 'Previous'), calendar.url_for_previous_view %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view %>
-      <%= link_to t('simple_calendar.next', default: 'Next'), calendar.url_for_next_view %>
-    </nav>
-  </div>
+<nav class="month-calendar-nav-container">
+   <div class="month-calendar-link-container">
+      <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view, class: "month-calendar-link" %>
+      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: "month-calendar-link" %>
+      <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view, class: "month-calendar-link" %>
+   </div>
+   <div class="month-calendar-link-container">
+      <%= link_to "Add an event", new_calendar_event_path(calendar_id:current_user.calendars.first.id), class: "month-calendar-link " %>
+   </div>
+</nav>
+</div>
 
   <table class="table">
     <thead>
