@@ -1,0 +1,32 @@
+<%= form_with(model: @group, local: true, html: { class: 'needs-validation', novalidate: true }) do |form| %>
+  <% if @group.errors.any? %>
+    <div class="alert alert-danger" role="alert">
+      <h2><%= pluralize(@group.errors.count, "error") %> prohibited this group from being saved:</h2>
+      <ul>
+        <% @group.errors.each do |error| %>
+          <li><%= error.full_message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="form-group">
+    <%= form.label :name, class: 'form-control-label' %>
+    <%= form.text_field :name, class: 'form-control' %>
+  </div>
+
+  <div class="form-group">
+    <%= form.label :description, class: 'form-control-label' %>
+    <%= form.text_area :description, class: 'form-control' %>
+  </div>
+
+  <div class="form-group" style="margin-top: 20px;">
+    <%= form.submit 'Update Group', class: 'btn submit-btn' %>
+  </div>
+<% end %>
+
+<br>
+
+<div>
+  <%= button_to "Delete this group", @group, method: :delete, data: { confirm: "Are you sure?" }, class: 'btn submit-btn' %>
+</div>
