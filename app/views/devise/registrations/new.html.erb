@@ -11,8 +11,6 @@
 <%= f.input :timezone, as: :select, collection: ActiveSupport::TimeZone.all.map { |tz| [tz.name, tz.name] }, include_blank: 'Select Your Current Timezone', label: false%>
 <%= f.input :password, required: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length), input_html: { autocomplete: "new-password", placeholder: 'Password' }, label: false %>
 <%= f.input :password_confirmation, required: true, input_html: { autocomplete: "new-password", placeholder: 'Password Confirmation' }, label: false %>
-    <%= f.input :profile_picture, as: :file%>
-
   </div>
 
   <div class="form-actions">
