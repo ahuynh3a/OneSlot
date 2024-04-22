@@ -3,7 +3,9 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 gem 'simple_form'
 
-ruby "3.2.1"
+#ruby "3.2.1"
+ruby File.read('.ruby-version').strip
+
 gem "simple_calendar"
 
 
