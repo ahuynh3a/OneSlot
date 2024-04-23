@@ -16,12 +16,12 @@
 <!--Div 2 --->
 
 <div class="bg-white div-with-full-vh" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
-  <div class="container d-flex flex-row justify-content-between" style="max-width: 100%; padding: 0 50px;"> <!-- Ensures no overflow and padding is consistent -->
-    <!-- Left Column for Text -->
-    <div class="col-md-6 d-flex flex-column justify-content-center"> <!-- Ensures vertical centering within the column -->
-      <div>
+  <div class="container">
+    <div class="row justify-content-between align-items-center">
+      <!-- Left Column for Text -->
+      <div class="col-lg-6 col-md-12 d-flex flex-column justify-content-center mb-3">
         <h2 style="margin-bottom: 50px; font-weight: normal;">How It Works</h2>
-        <div class="mb-5">
+        <div>
           <div class="mb-5">
             <h3 style="font-size: 1.25em;">Step 1: Sign Up & Create Your Profile</h3>
             <p>Get started in seconds with your email to customize your profile settings.</p>
@@ -36,21 +36,20 @@
           </div>
         </div>
       </div>
-    </div>
-    <!-- Right Column for Image -->
-    <div class="col-md-6 d-flex justify-content-center align-items-center">
-      <%= image_tag("Calendar.jpeg", alt: "Features and Benefits", class: "img-fluid", style: "width: 600px; border-radius: 20px;") %>
+      <!-- Right Column for Image -->
+      <div class="col-lg-6 col-md-12 d-flex justify-content-center align-items-center">
+        <%= image_tag("Calendar.jpeg", alt: "Features and Benefits", class: "img-fluid", style: "width: 600px; max-width: 100%; border-radius: 20px; height: auto;") %>
+      </div>
     </div>
   </div>
 </div>
 
+
 <!--Div 3 --->
 <div class="bg-main div-with-full-vh d-flex flex-column justify-content-center align-items-center text-center">
-   <h2 class="roboto text-uppercase" style="font-size: 0.9rem; letter-spacing: 0.15em; color: #767676;">Happy Customers</h2>
-   <h2 class="roboto" style="font-size: 1.5rem; font-weight: normal; margin-top: 0.5rem;">We deliver what we promise. See what clients are expressing about us.</h2>
-    <hr style="width: 150px; border: 1px solid black; margin-bottom: 5rem;" />
-
-
+  <h2 class="roboto text-uppercase" style="font-size: 0.9rem; letter-spacing: 0.15em; color: #767676;">Happy Customers</h2>
+  <h2 class="roboto" style="font-size: 1.5rem; font-weight: normal; margin-top: 0.5rem;">We deliver what we promise. See what clients are expressing about us.</h2>
+  <hr style="width: 150px; border: 1px solid black; margin-bottom: 5rem;" />
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner h-100 ">
       <div class="carousel-item active">
@@ -130,15 +129,15 @@
         </div>
       </div>
     </div>
-  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
-    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-    <span class="sr-only">Previous</span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
-    <span class="carousel-control-next-icon" aria-hidden="true"></span>
-    <span class="sr-only">Next</span>
-  </a>
-</div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
 </div>
 
 <!--Div 4--->
