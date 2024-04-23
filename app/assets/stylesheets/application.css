@@ -487,3 +487,105 @@ body {
   margin-top: 10px;
 
 }
+
+
+
+.login-container {
+  max-width: 360px;
+  padding: 40px;
+  margin: auto;
+  background: #ffffff;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  margin-top: 5%;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 600;
+  margin-bottom: 30px;
+  color: #333;
+  text-align: center;
+}
+
+.login-form .form-group {
+  margin-bottom: 20px;
+}
+
+.form-control {
+  border: 1px solid #ced4da;
+  border-radius: 4px;
+  padding: 10px;
+  font-size: 16px;
+}
+
+.form-control:focus {
+  border-color: #FFBE91;
+  box-shadow: 0 0 0 0.2rem rgba(253, 166, 89, 0.25);
+}
+
+.form-check {
+  margin-bottom: 20px;
+}
+
+.form-check-input {
+  margin-top: 0.3em;
+}
+
+.form-check-label {
+  margin-left: 1.5em;
+}
+
+.btn-primary {
+  padding: 10px 20px;
+  border: none;
+  border-radius: 50px; 
+  background-color: #FF8B5E;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+.btn-primary:hover {
+  background-color: #FFBE91;
+}
+
+.btn-block {
+  width: 100%;
+  height: 50px;
+}
+
+.login-links {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.cancel-account {
+  margin-top: 25px;
+}
+
+
+.btn-primary, .btn-danger {
+  padding: 10px;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  height: 50px;
+}
+
+.btn-danger {
+  background-color: #dc3545;
+}
+
+.btn-danger:hover {
+  background-color: #c82333;
+}
