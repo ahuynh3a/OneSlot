@@ -1,17 +1,16 @@
 <div class="container mx-auto px-4" style="min-height: 100vh">
   <h2>Upcoming Events</h2>
   <hr>
-    <div id="upcoming-events">
+    <div id="upcoming-events d-flex flex-column">
     <% @events.each do |event| %>
       <%= link_to calendar_event_path(event.calendar, event), class: "upcoming-events-link" do %>
         <div class="upcoming-events-card">
           <div class="upcoming-events-card-body">
             <h5 class="upcoming-events-card-title"><%= event.name %></h5>
-            <% start_time, end_time = convert_event_times_to_user_time_zone(event, current_user.timezone) %>
+            <% start_time, end_time = convert_event_times_to_user_time_zone(event, current_user.timezone)%>
             <p class="upcoming-events-card-text"><strong>Start:</strong> <%= start_time.strftime("%B %d, %Y at %I:%M %p") %></p>
             <p class="upcoming-events-card-text"><strong>End:</strong> <%= end_time.strftime("%B %d, %Y at %I:%M %p") %></p>
           </div>
-        </div>
         </div>
       <% end %>
     <% end %>

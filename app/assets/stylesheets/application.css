@@ -439,3 +439,26 @@ body {
   justify-content: space-between;
   flex-grow: 1;
 }
+
+
+.review-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+#carouselExampleControls {
+  width: 80%; /* Adjust the width as needed */
+  max-width: 800px; /* Set a maximum width */
+  height: auto; /* Allow height to adjust based on content */
+}
+
+.review-title {
+  margin-bottom: 50px;
+  top: 100px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}

@@ -8,23 +8,23 @@
       <div class="d-flex justify-content-center align-items-center text-center roboto">
         <p> <strong>OneSlot</strong> is your group scheduling solution, share schedules, cut out back-and-forth texts, and pinpoint the perfect time.</p>
       </div>
-        <a href="/users/sign_up" class="btn custom-btn roboto">Start Making Plans</a>
+      <a href="/users/sign_up" class="btn custom-btn roboto">Start Making Plans</a>
     </div>
   </div>
 </div>
 
 <!-- Calendar Image Layered Ontop --->
 
-<div style="position: relative; z-index: 2; width: 100%; display: flex; justify-content: center;">
-  <%= image_tag("Calendar.jpeg", alt: "Features and Benefits", class: "img-fluid", style: "position: absolute; top: -190px; width: 600px; border-radius: 20px;") %>
-</div>
+<%# <div style=" width: 100%; display: flex; justify-content: center;">
+  <%= image_tag("Calendar.jpeg", alt: "Features and Benefits", class: "img-fluid", style: "width: 600px; border-radius: 20px;") %>
 
 <!--Div 2 --->
 
-<div class="bg-white d-flex justify-content-center align-items-center div-with-full-vh" style="padding-top: 50px;">
-  <div class="container">
+<div class="bg-white div-with-full-vh" style="padding-top: 50px; padding-bottom: 50px;">
+  <div class="container d-flex flex-column justify-content-center align-items-center">
+    <%= image_tag("Calendar.jpeg", alt: "Features and Benefits", class: "img-fluid", style: "width: 600px; border-radius: 20px;") %>
     <div class="row justify-content-center mt-5">
-      <div style="display: inline-block; position: relative; margin-bottom: 20px; margin-top: 20px; width: 100%; text-align: left; roboto">
+      <div style="display: inline-block; position: relative; width: 100%; text-align: left; roboto">
         <h2 style="margin-bottom: 0; display: inline-block; border-bottom: 2px solid black; font-size: 2em;">How It Works</h2>
       </div>
     </div>
@@ -36,68 +36,69 @@
       <div class="col-md-4 text-right roboto">
         <h3 style="font-size: 1.25em;">Step 2: Add Your Schedule</h3>
         <p style="font-size: 1em;">Connect your calendar or manually input past engagements. This makes your free times visible to group members for easy planning.</p>
-      </div>    
+      </div>
       <div class="col-md-4 text-right roboto">
         <h3 style="font-size: 1.25em;">Step 3: Create a Group</h3>
         <p style="font-size: 1em;">Create a group with a few clicks, and access a collective calendar showcasing everyone's events. This enables you to easily identify a mutual free slot that suits all members.</p>
       </div>
-    </div>    
+    </div>
+
   </div>
+
 </div>
-</div>
 
+<!--Div 3 --->
+<div class="bg-main div-with-full-vh d-flex flex-column justify-content-center align-items-center position-relative">
+    <h2 class="text-center position-absolute review-title roboto">OneSlot In Action</h2>
 
-<!--Review Cards Layered Ontop--->
-
-<div style="position: relative; width: 100%; display: flex; justify-content: center; z-index: 2;">
-  <div class="container" style="position: absolute; top: -100px; width: 100%;">
-    <h2 class="text-center mb-4 mt-5 roboto">OneSlot In Action</h2> <!-- Adjusted margin-bottom to mt-5 -->
-    <div class="row justify-content-center">
-      <div class="col">
-        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
-          <%= image_tag("family-get-together_post.jpeg", alt: "First review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
-          <div class="card-body text-center">
-            <p class="card-text roboto">"My dad's birthday celebration was a huge success! Seeing the joy on his face when he walked into the surprise party was priceless. OneSlot helped us overcome our busy schedules and create unforgettable memories with our loved ones." - Rachel T., Boston"</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
-          <%= image_tag("studygroup.jpeg", alt: "Second review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
-          <div class="card-body text-center">
-            <p class="card-text roboto">"I love how intuitive OneSlot is to use. Whether it's organizing a family gathering or a study session with classmates, the app simplifies the process and saves us valuable time." - Emily R., Chicago</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
-          <%= image_tag("friends2.jpeg", alt: "Third review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
-          <div class="card-body text-center">
-            <p class="card-text roboto">"OneSlot has been a game-changer for our friend group. No more endless group chats trying to coordinate schedules. Now, we can easily find a time that works for everyone to hang out!" - Sarah M., New York</p>
-          </div>
-        </div>
-      </div>
-      <div class="col">
-        <div class="card mb-2 bg-main border bg-main"> <!-- Added bg-main class and border bg-main -->
-          <%= image_tag("bookclub.jpeg", alt: "fourth review", class: "card-img-top img-fluid rounded mx-auto", style: "width: 300px; height: 200px;") %> <!-- Added mx-auto class for centering -->
+  <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
+    <div class="carousel-inner h-100 ">
+      <div class="carousel-item active">
+        <div class="review-card mb-2 bg-main border bg-main mx-auto">
+          <%= image_tag("bookclub.jpeg", alt: "fourth review", class:"card-img-top img-fluid rounded mx-auto", style:"width: 100%; height: 200px;") %>
           <div class="card-body text-center">
             <p class="card-text roboto">"OneSlot has made scheduling our monthly book club meetings a breeze. No more confusion or double bookings. Plus, the interface is so user-friendly!" - David W., Toronto</p>
           </div>
         </div>
       </div>
+      <div class="carousel-item">
+        <div class="review-card mb-2 bg-main border bg-main mx-auto">
+          <%= image_tag("friends2.jpeg", alt: "Third review", class:"card-img-top img-fluid rounded mx-auto", style:"width: 100%; height: 200px;") %>
+          <div class="card-body text-center">
+            <p class="card-text roboto">"OneSlot has been a game-changer for our friend group. No more endless group chats trying to coordinate schedules. Now, we can easily find a time that works for everyone to hang out!" - Sarah M., New York</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="review-card mb-2 bg-main border bg-main mx-auto">
+          <%= image_tag("family-get-together_post.jpeg", alt: "First review", class: "card-img-top img-fluid rounded mx-auto", style:"width: 100%; height: 200px;") %>
+          <div class="card-body text-center">
+            <p class="card-text roboto">"My dad's birthday celebration was a huge success! Seeing the joy on his face when he walked into the surprise party was priceless. OneSlot helped us overcome our busy schedules and create unforgettable memories with our loved ones." - Rachel T., Boston</p>
+          </div>
+        </div>
+      </div>
+      <div class="carousel-item">
+        <div class="review-card mb-2 bg-main border bg-main mx-auto">
+          <%= image_tag("studygroup.jpeg", alt: "Second review", class:"card-img-top img-fluid rounded mx-auto", style:"width: 100%; height: 200px;") %>
+          <div class="card-body text-center">
+            <p class="card-text roboto">"I love how intuitive OneSlot is to use. Whether it's organizing a family gathering or a study session with classmates, the app simplifies the process and saves us valuable time." - Emily R., Chicago</p>
+          </div>
+        </div>
+      </div>
     </div>
-  </div>
+    <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-bs-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-bs-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
   </div>
 
-
-<!--Div 3 --->
-<div class="bg-main d-flex justify-content-center align-items-center div-with-full-vh" id="hero">
-  
 </div>
 
-
 <!--Div 4--->
-
 
 <div class="bg-orange d-flex justify-content-center align-items-center flex-column" id="hero" style="padding: 20px; color: white; font-family: 'Roboto', sans-serif;">
   <h3 style="color: white; roboto">Connect With Us</h3>
