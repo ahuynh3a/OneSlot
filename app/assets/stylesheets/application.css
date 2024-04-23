@@ -456,9 +456,34 @@ body {
 .review-title {
   margin-bottom: 50px;
   top: 100px;
+  font-weight: normal;
+  color: #aaa;
+  font-size: 15px;
 }
 
 .carousel-control-next,
 .carousel-control-prev {
     filter: invert(100%);
+}
+
+.reviewer-name {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.reviewer-location {
+  color: #aaa; /* Adjust the color value as needed to get the desired faded look */
+}
+
+.location-text {
+  margin-bottom: 0;
+}
+
+.star-rating {
+  color: #f7ca16; 
+  font-size: 1rem; /* Adjust the size of the stars */
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
 }
