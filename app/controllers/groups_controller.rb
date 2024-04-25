@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :set_group, only: %i[ show edit update destroy create ]
 
   # GET /groups or /groups.json
   def index
@@ -8,9 +8,8 @@ class GroupsController < ApplicationController
 
   # GET /groups/1 or /groups/1.json
   def show
-    @group = Group.find(params[:id])
     @events = @group.member_events
-    @user_timezone = current_user.timezone
+    @schedule_analyzer = ScheduleAnalyzer.new(@events)
   end
 
   # GET /groups/new
@@ -20,17 +19,16 @@ class GroupsController < ApplicationController
 
   # GET /groups/1/edit
   def edit
-    @group = Group.find(params[:id])
   end
 
   # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
-      @group.users << current_user unless @group.user_ids.include?(current_user.id)
+    @group.users << current_user unless @group.user_ids.include?(current_user.id)
 
     respond_to do |format|
       if @group.save
-        format.html { redirect_to user_groups_path(username: current_user.username), notice: "Group was successfully created."}
+        format.html { redirect_to user_groups_path(username: current_user.username), notice: "Group was successfully created." }
         format.json { render :show, status: :created, location: @group }
       else
         format.html { render :new, status: :unprocessable_entity }
@@ -64,13 +62,14 @@ class GroupsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_group
-      @group = Group.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def group_params
-      params.require(:group).permit(:name, :description, user_ids: [])
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_group
+    @group = Group.find(params[:id])
+  end
+
+  # Only allow a list of trusted parameters through.
+  def group_params
+    params.require(:group).permit(:name, :description, user_ids: [])
+  end
 end

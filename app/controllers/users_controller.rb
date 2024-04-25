@@ -3,12 +3,11 @@ class UsersController < ApplicationController
 
   def show
     @events = @user.events
-
   end
 
 
   def events
-    @events = @user.events.where('start_time > ?', Time.current.in_time_zone(@user.timezone)).order(:start_time)
+    @events = @user.events.upcoming
   end
 
   def groups

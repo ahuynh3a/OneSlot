@@ -15,12 +15,11 @@ class Group < ApplicationRecord
 
   validates :name, presence: true
 
-  def member_events
-    Event.joins(calendar: :owner).where(calendars: { owner_id: users.select(:id) })
-  end
-
   scope :search, ->(query) {
-    where("LOWER(name) LIKE LOWER(:query) OR LOWER(description) LIKE LOWER(:query)", query: "%#{query}%")
-  }
+          where("LOWER(name) LIKE LOWER(:query) OR LOWER(description) LIKE LOWER(:query)", query: "%#{query}%")
+        }
 
+  def member_events
+    Event.for_members(users.ids)
+  end
 end

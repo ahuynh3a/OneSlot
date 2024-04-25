@@ -1,13 +1,13 @@
 <nav class="navbar navbar-expand-lg bg-white fixed-top">
   <div class="container">
-  <%= link_to root_path, class: "navbar-brand" do %>
-  <i class="bi bi-calendar-event nav-icon"></i> OneSlot
-<% end %>
+    <%= link_to root_path, class: "navbar-brand" do %>
+      <i class="bi bi-calendar-event nav-icon"></i> OneSlot
+    <% end %>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav me-auto"> <!-- Changed from mr-auto to me-auto for Bootstrap 5 -->
+      <ul class="navbar-nav me-auto">
         <% if user_signed_in? %>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
@@ -21,30 +21,28 @@
           </li>
         <% end %>
       </ul>
-  
-    <ul class="navbar-nav ms-auto"> <!-- Items aligned to the right -->
-  <% if user_signed_in? %>
-    <li class="nav-item">
-      <%= link_to edit_user_registration_path, class: "btn custom-btn nav-link d-flex align-items-center" do %>
-        <% if current_user.profile_picture.attached? %>
-          <%= image_tag current_user.profile_picture, alt: "#{current_user.username}'s profile picture", class: "me-2 navbar-profile-picture" %>
+      <ul class="navbar-nav ms-auto">
+        <% if user_signed_in? %>
+          <li class="nav-item">
+            <%= link_to edit_user_registration_path, class: "btn custom-btn nav-link d-flex align-items-center" do %>
+              <% if current_user.profile_picture.attached? %>
+                <%= image_tag current_user.profile_picture, alt: "#{current_user.username}'s profile picture", class: "me-2 navbar-profile-picture" %>
+              <% end %>
+              <%= current_user.name.split.map(&:capitalize).join(' ') %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn custom-btn nav-link ms-3" %>
+          <% else %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign in", new_user_session_path, class:"btn custom-btn nav-link ms-3" %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Sign up", new_user_registration_path, class: "btn custom-btn nav-link ms-3" %> <!-- ms-3 for margin spacing -->
+          </li>
         <% end %>
-        <%= current_user.name.split.map(&:capitalize).join(' ') %>
-      <% end %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn custom-btn nav-link ms-3" %> 
-    <% else %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Sign in", new_user_session_path, class: "nav-link" %>
-    </li>
-    <li class="nav-item">
-      <%= link_to "Sign up", new_user_registration_path, class: "btn custom-btn nav-link ms-3" %> <!-- ms-3 for margin spacing -->
-    </li>
-  <% end %>
-</ul>
-
+      </ul>
     </div>
   </div>
 </nav>
