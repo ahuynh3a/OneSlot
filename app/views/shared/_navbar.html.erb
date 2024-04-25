@@ -23,23 +23,27 @@
       </ul>
       <ul class="navbar-nav ms-auto">
         <% if user_signed_in? %>
-          <li class="nav-item">
-            <%= link_to edit_user_registration_path, class: "btn custom-btn nav-link d-flex align-items-center" do %>
-              <% if current_user.profile_picture.attached? %>
-                <%= image_tag current_user.profile_picture, alt: "#{current_user.username}'s profile picture", class: "me-2 navbar-profile-picture" %>
-              <% end %>
-              <%= current_user.name.split.map(&:capitalize).join(' ') %>
+          <li class="nav-item d-flex justify-content-start align-items-start ">
+            <%= link_to edit_user_registration_path, class: "btn nav-custom-btn nav-link w-100" do %>
+              <div>
+                <% if current_user.profile_picture.attached? %>
+                  <%= image_tag current_user.profile_picture, alt: "#{current_user.username}'s profile picture", class: "me-1 navbar-profile-picture" %>
+                <% else %>
+                  <%= image_tag 'default_profile.png', class:"me-1 navbar-profile-picture"%>
+                <% end %>
+                <%= current_user.name.split.map(&:capitalize).join(' ')%>
+              </div>
             <% end %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn custom-btn nav-link ms-3" %>
+            <%= link_to "Sign out", destroy_user_session_path, data: { turbo_method: :delete }, class: "btn nav-custom-btn nav-link" %>
           <% else %>
           </li>
           <li class="nav-item">
             <%= link_to "Sign in", new_user_session_path, class:"btn custom-btn nav-link ms-3" %>
           </li>
           <li class="nav-item">
-            <%= link_to "Sign up", new_user_registration_path, class: "btn custom-btn nav-link ms-3" %> <!-- ms-3 for margin spacing -->
+            <%= link_to "Sign up", new_user_registration_path, class:"btn custom-btn nav-link ms-3" %>
           </li>
         <% end %>
       </ul>

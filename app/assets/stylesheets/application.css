@@ -68,14 +68,15 @@ html * {
 /* button color */
 .custom-btn {
   background-color: #F9F9F9;
+  border: solid;
   border-color: #FF8B5E;
+  margin: 2px;
 }
+
 
 .custom-btn:hover {
   background-color: #FFBE91;
-  /* Light orange color on hover */
   border-color: #FFBE91;
-  /* Adjust the border color to match if necessary */
 }
 
 .submit-btn{
@@ -86,20 +87,28 @@ html * {
 
 .submit-btn:hover {
   background-color: #FF8B5E;
-  /* Light orange color on hover */
   border-color: #FF8B5E;
-  /* Adjust the border color to match if necessary */
+}
+
+
+.nav-custom-btn {
+  background-color: #F9F9F9;
+  border: solid;
+  border-color: #ddddddde;
+  margin: 2px;
+}
+
+.nav-custom-btn:hover {
+  background-color: #FFBE91;
+  border-color: #FFBE91;
 }
 
 /*image*/
 
 .custom-img-max {
   max-width: 100%;
-  /* Ensures responsiveness */
   height: auto;
-  /* Maintains aspect ratio */
   max-height: 500px;
-  /* Example: Adjusts the maximum height */
 }
 
 .image-fixed-height {
@@ -149,7 +158,6 @@ body {
   width: 50px;
   height: 50px;
   object-fit: cover;
-  display: block;
   margin: 0 auto;
 }
 
@@ -158,10 +166,7 @@ body {
   width: 23px;
   height: 23px;
   object-fit: cover;
-  display: block;
-  /* Ensures the image does not have inline whitespace */
   margin: 0 auto;
-  /* Centers the image */
 }
 
 .user-name {
