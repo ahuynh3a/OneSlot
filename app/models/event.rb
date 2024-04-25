@@ -36,14 +36,14 @@ class Event < ApplicationRecord
   # Scopes for querying events
   scope :upcoming, -> { where("start_time > ?", Time.current).order(:start_time) }
   scope :overlapping, ->(start_date, end_date) {
-    where("start_time <= ? AND end_time >= ?", end_date, start_date)
-  }
+          where("start_time <= ? AND end_time >= ?", end_date, start_date)
+        }
   scope :on_date, ->(date) {
-    where(start_time: date.beginning_of_day..date.end_of_day)
-  }
+          where(start_time: date.beginning_of_day..date.end_of_day)
+        }
   scope :for_members, ->(user_ids) {
-    joins(calendar: :owner).where(calendars: { owner_id: user_ids })
-  }
+          joins(calendar: :owner).where(calendars: { owner_id: user_ids })
+        }
 
   # Class method to group events by their start date
   def self.grouped_by_date

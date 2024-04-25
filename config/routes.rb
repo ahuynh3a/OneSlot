@@ -4,14 +4,14 @@ Rails.application.routes.draw do
 
   devise_for :users
 
-  resources :groups do
-    resources :memberships, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :groups, except: [:index] do
+    resources :memberships, except: [:index]
   end
 
-  resources :calendars do
-    resources :events, only: [:show, :new, :create, :edit, :update, :destroy]
+  resources :calendars, except: [:index] do
+    resources :events, except: [:index]
   end
- 
+
 
   get ":username/calendar" => "users#calendar", as: :user_calendar
   get ":username/events" => "users#events", as: :user_events
