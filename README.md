@@ -1,5 +1,5 @@
 # OneSlot
-Unislot is a user-friendly app that streamlines scheduling for groups by helping users identify mutual free times, regardless of their time zones. In this initial version, users input their scheduled events into an in-app calendar. They can also create groups, add members, and view a calendar that highlights times when everyone is free each day, all adjusted to each user's local time zone. This timezone-friendly feature simplifies the process of finding optimal meeting times for all group members, making it easier to coordinate schedules across different regions.
+OneSlot is a user-friendly app that streamlines scheduling for groups by helping users identify mutual free times, regardless of their time zones. In this initial version, users input their scheduled events into an in-app calendar. They can also create groups, add members, and view a calendar that highlights times when everyone is free each day, all adjusted to each user's local time zone. This timezone-friendly feature simplifies the process of finding optimal meeting times for all group members, making it easier to coordinate schedules across different regions.
 
 ## Table of Contents
 - [Main Features](#main-features)
@@ -120,11 +120,50 @@ We adhere to the Ruby community style guide, and we expect all contributors to f
 * **Comment your code** where necessary to explain "why" something is done, not "what" is done—source code should be self-explanatory regarding the "what".
 * **Document methods and classes** thoroughly, focusing on their roles within the domain model, especially for public APIs.
 
-### Comments and Documentation
-* Commit messages should be clear and follow best practices, such as those outlined in <a href="https://cbea.ms/git-commit/">How to Write a Git Commit Message.</a>
+### Version Control Practices
+* Commit messages should be clear and follow best practices, such as those outlined in<a href="https://cbea.ms/git-commit/"> How to Write a Git Commit Message.</a>
 * Keep commits focused on a single issue to simplify future maintenance and troubleshooting.
 
-* 
+### Branch Naming Conventions
+Please use the following naming conventions for your branches:
+* ```<issue#-description>``` (i.e 31-added-ransack-search)
+
+### Pull Request Process
+1. **Creating a Pull Request:** Provide a detailed PR description, referencing the issue it addresses.
+2. **Review Process:** PRs require review from at least one maintainer.
+
+### Community and Communication
+Join our [Discord] to communicate with other contributors and maintainers.
+
+### Acknowledgment of Contributors
+Contributors who make significant contributions will be listed in our [README/CONTRIBUTORS] file.
+Thank you for contributing to **OneSlot**!
+
+### FAQ
+
+## AWS S3 Bucket Setup
+
+* To setup your AWS S3 bucket, sign up for an account here: <a href="https://aws.amazon.com/">Sign Up for AWS Account</a>
+* For more setup help, see this guide: <a href="https://medium.com/@emmanuelnwright/create-iam-users-and-s3-buckets-in-aws-264e78281f7f">AWS S3 Bucket and IAM User Setup Guide</a>
+
+## Master Key Errors
+
+* Be sure to follow the <a href="https://github.com/amandaag39/vitals?tab=readme-ov-file#configuration">Configuration Instructions</a>if you encounter an issue when setting up the project.
+
+## Ruby Version Errors
+
+* The project is written using Ruby 3.1.1, if you encounter issues upon cloning, make sure you have Ruby version 3.1.1 in your environment.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
