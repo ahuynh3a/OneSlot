@@ -2,17 +2,17 @@
   <div class="calendar-heading">
     <time datetime="<%= start_date.strftime('%Y-%m') %>" class="calendar-title" style="font-size: 30px; text-secondary"><%= t('date.month_names')[start_date.month] %> <%= start_date.year %></time>
 
-<nav class="month-calendar-nav-container">
-   <div class="month-calendar-link-container">
-      <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view, class: "month-calendar-link" %>
-      <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: "month-calendar-link" %>
-      <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view, class: "month-calendar-link" %>
-   </div>
-   <div class="month-calendar-link-container">
-      <%= link_to "Add an event", new_calendar_event_path(current_user.calendars.first), class: "month-calendar-link" %>
-   </div>
-</nav>
-</div>
+    <nav class="month-calendar-nav-container">
+      <div class="month-calendar-link-container">
+        <%= link_to t('simple_calendar.previous', default: '<'), calendar.url_for_previous_view, class: "month-calendar-link" %>
+        <%= link_to t('simple_calendar.today', default: 'Today'), calendar.url_for_today_view, class: "month-calendar-link" %>
+        <%= link_to t('simple_calendar.next', default: '>'), calendar.url_for_next_view, class: "month-calendar-link" %>
+      </div>
+      <div class="month-calendar-link-container">
+        <%= link_to "Add an event", new_calendar_event_path(current_user.calendars.first), class: "month-calendar-link" %>
+      </div>
+    </nav>
+  </div>
 
   <table class="table">
     <thead>
@@ -23,17 +23,17 @@
       </tr>
     </thead>
 
-   <tbody>
-  <% date_range.each_slice(7) do |week| %>
-    <tr>
-      <% week.each do |day| %>
-        <%= content_tag :td, class: calendar.td_classes_for(day).push(day.to_date == Date.current ? 'current-day' : '') do %>
-          <%# Your existing rendering logic for each day %>
-          <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
-        <% end %>
+    <tbody>
+      <% date_range.each_slice(7) do |week| %>
+        <tr>
+          <% week.each do |day| %>
+            <%= content_tag :td, class: calendar.td_classes_for(day).push(day.to_date == Date.current ? 'current-day' : '') do %>
+              <%# Your existing rendering logic for each day %>
+              <% instance_exec(day, calendar.sorted_events_for(day), &passed_block) %>
+            <% end %>
+          <% end %>
+        </tr>
       <% end %>
-    </tr>
-  <% end %>
-</tbody>
+    </tbody>
   </table>
 </div>

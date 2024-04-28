@@ -1,30 +1,27 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: %i[ show edit update destroy]
+  before_action :set_group, only: %i[ show edit update destroy ]
+  before_action :ensure_current_user_is_owner, only: [:destroy, :update, :edit]
 
-  # GET /groups or /groups.json
   def index
     @groups = Group.all
   end
 
-  # GET /groups/1 or /groups/1.json
   def show
     @events = @group.member_events
     @schedule_analyzer = ScheduleAnalyzer.new(@events)
   end
 
-  # GET /groups/new
   def new
     @group = Group.new
   end
 
-  # GET /groups/1/edit
   def edit
   end
 
-  # POST /groups or /groups.json
   def create
     @group = Group.new(group_params)
     @group.users << current_user unless @group.user_ids.include?(current_user.id)
+    @group.owner = current_user
 
     respond_to do |format|
       if @group.save
@@ -37,7 +34,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /groups/1 or /groups/1.json
   def update
     @group = Group.find(params[:id])
     respond_to do |format|
@@ -51,7 +47,6 @@ class GroupsController < ApplicationController
     end
   end
 
-  # DELETE /groups/1 or /groups/1.json
   def destroy
     @group.destroy
 
@@ -63,12 +58,16 @@ class GroupsController < ApplicationController
 
   private
 
-  # Use callbacks to share common setup or constraints between actions.
   def set_group
     @group = Group.find(params[:id])
   end
 
-  # Only allow a list of trusted parameters through.
+  def ensure_current_user_is_owner
+    if current_user != @group.owner
+      redirect_back fallback_location: root_url, alert: "You do not have permission to modify this group. Please contact the owner if you believe this is an error."
+    end
+  end
+
   def group_params
     params.require(:group).permit(:name, :description, user_ids: [])
   end

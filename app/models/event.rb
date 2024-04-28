@@ -22,7 +22,6 @@
 #  fk_rails_...  (calendar_id => calendars.id)
 
 class Event < ApplicationRecord
-  # List of all valid timezones from ActiveSupport to ensure timezone validity
   VALID_TIMEZONES = ActiveSupport::TimeZone.all.map(&:name)
 
   # Associations
