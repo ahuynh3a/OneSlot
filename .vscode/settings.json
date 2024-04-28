@@ -60,7 +60,7 @@
     "erb": "html"
   },
   "[ruby]": {
-    "editor.defaultFormatter": "jnbt.vscode-rufo",
+    "editor.defaultFormatter": "mbessey.vscode-rufo",
     "editor.formatOnSave": false
   },
   "[erb]": {

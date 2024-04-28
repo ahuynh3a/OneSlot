@@ -1,7 +1,7 @@
 <div class="container mx-auto px-4" style="min-height: 100vh">
   <h2>Upcoming Events</h2>
   <hr>
-    <div id="upcoming-events d-flex flex-column">
+  <div id="upcoming-events d-flex flex-column">
     <% @events.each do |event| %>
       <%= link_to calendar_event_path(event.calendar, event), class: "upcoming-events-link" do %>
         <div class="upcoming-events-card">

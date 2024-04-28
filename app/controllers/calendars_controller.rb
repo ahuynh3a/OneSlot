@@ -1,25 +1,22 @@
 class CalendarsController < ApplicationController
+  include CalendarOwnershipConcern
   before_action :set_calendar, only: %i[ show edit update destroy ]
+  before_action :ensure_current_user_is_owner_of_calendar, only: [:destroy, :update, :edit]
 
-  # GET /calendars or /calendars.json
   def index
     @calendars = Calendar.all
   end
 
-  # GET /calendars/1 or /calendars/1.json
   def show
   end
 
-  # GET /calendars/new
   def new
     @calendar = Calendar.new
   end
 
-  # GET /calendars/1/edit
   def edit
   end
 
-  # POST /calendars or /calendars.json
   def create
     @calendar = Calendar.new(calendar_params)
     @calendar.owner = current_user
@@ -35,7 +32,6 @@ class CalendarsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /calendars/1 or /calendars/1.json
   def update
     respond_to do |format|
       if @calendar.update(calendar_params)
@@ -48,10 +44,9 @@ class CalendarsController < ApplicationController
     end
   end
 
-  # DELETE /calendars/1 or /calendars/1.json
   def destroy
     @calendar.destroy
-    
+
     respond_to do |format|
       format.html { redirect_to calendars_url, notice: "Calendar was successfully destroyed." }
       format.json { head :no_content }
@@ -59,13 +54,12 @@ class CalendarsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_calendar
-      @calendar = Calendar.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def calendar_params
-      params.require(:calendar).permit(:owner_id, :title, :description)
-    end
+  def set_calendar
+    @calendar = Calendar.find(params[:id])
+  end
+
+  def calendar_params
+    params.require(:calendar).permit(:owner_id, :title, :description)
+  end
 end

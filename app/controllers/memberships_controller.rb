@@ -1,41 +1,33 @@
 class MembershipsController < ApplicationController
-  before_action :set_membership, only: %i[ show edit update destroy ]
+  before_action :set_group, only: [:show, :new, :create, :edit, :update, :destroy]
+  before_action :set_membership, only: [:show, :edit, :update, :destroy]
+  before_action :ensure_current_user_is_group_owner, only: [:new, :create, :edit, :update]
+  before_action :ensure_current_user_is__group_owner_or_self, only: [:destroy]
 
-  # GET /memberships or /memberships.json
   def index
     @memberships = Membership.all
   end
 
-  # GET /memberships/1 or /memberships/1.json
   def show
-    @group = Group.find(params[:group_id])
-    @membership = Membership.find(params[:id]) 
   end
 
-  # GET /memberships/new
   def new
-    @group = Group.find(params[:group_id])
-    @membership = @group.memberships.build  
+    @membership = @group.memberships.build
   end
 
-  # GET /memberships/1/edit
   def edit
   end
 
-  # POST /memberships or /memberships.json
   def create
-    @group = Group.find(params[:group_id])
     existing_membership = @group.memberships.find_by(user_id: membership_params[:user_id])
-  
     respond_to do |format|
       if existing_membership
-        format.html { redirect_to group_path(@group), notice: 'Member already exists in the group.' }
-        format.json { render json: {error: 'Member already exists in the group'}, status: :unprocessable_entity }
+        format.html { redirect_to group_path(@group), notice: "Member already exists in the group." }
+        format.json { render json: { error: "Member already exists in the group" }, status: :unprocessable_entity }
       else
         @membership = @group.memberships.build(membership_params)
-        
         if @membership.save
-          format.html { redirect_to group_path(@group), notice: 'Membership was successfully created.' }
+          format.html { redirect_to group_path(@group), notice: "Membership was successfully created." }
           format.json { render :show, status: :created, location: @membership }
         else
           format.html { render :new, status: :unprocessable_entity }
@@ -44,13 +36,11 @@ class MembershipsController < ApplicationController
       end
     end
   end
-  
 
-  # PATCH/PUT /memberships/1 or /memberships/1.json
   def update
     respond_to do |format|
       if @membership.update(membership_params)
-        format.html { redirect_to membership_url(@membership), notice: "Membership was successfully updated." }
+        format.html { redirect_to [@group, @membership], notice: "Membership was successfully updated." }
         format.json { render :show, status: :ok, location: @membership }
       else
         format.html { render :edit, status: :unprocessable_entity }
@@ -59,26 +49,44 @@ class MembershipsController < ApplicationController
     end
   end
 
-  # DELETE /memberships/1 or /memberships/1.json
   def destroy
-    @group = Group.find(params[:group_id])
-    @membership = @group.memberships.find(params[:id])
-    @membership.destroy
-    respond_to do |format|
-      format.html { redirect_to group_path(@group), notice: 'Membership was successfully removed.' }
-      format.json { head :no_content }
+    @membership = @group.memberships.find_by(user_id: current_user.id)
+
+    return redirect_not_member unless @membership
+
+    if @membership.destroy
+      redirect_to user_groups_path(current_user.username), notice: "You have successfully left the group."
+    else
+      respond_to do |format|
+        format.html { redirect_to group_path(@group), alert: "Failed to leave the group." }
+        format.json { render json: @membership.errors, status: :unprocessable_entity }
+      end
     end
   end
-  
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_membership
-      @membership = Membership.find(params[:id])
-    end
 
-    # Only allow a list of trusted parameters through.
-    def membership_params
-      params.require(:membership).permit(:user_id, :group_id)
+  def set_group
+    @group = Group.find(params[:group_id])
+  end
+
+  def set_membership
+    @membership = @group.memberships.find(params[:id])
+  end
+
+  def ensure_current_user_is_group_owner
+    unless current_user == @group.owner
+      redirect_back fallback_location: root_url, alert: "Only the group owner can manage memberships."
     end
+  end
+
+  def ensure_current_user_is__group_owner_or_self
+    unless current_user == @group.owner || current_user == @membership.user
+      redirect_back fallback_location: root_url, alert: "You do not have permission to remove this membership unless it is your own."
+    end
+  end
+
+  def membership_params
+    params.require(:membership).permit(:user_id)
+  end
 end
