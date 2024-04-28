@@ -3,7 +3,9 @@
     <div class="card-body">
       <div class="d-flex justify-content-between align-items-center">
         <h3><%= @group.name %></h3>
-        <%= link_to "...", edit_group_path(@group), class: "edit-group-btn" %>
+        <% if current_user == @group.owner %>
+          <%= link_to "...", edit_group_path(@group), class: "edit-group-btn" %>
+        <%end%>
       </div>
       <p class="text-muted"><%= @group.description %></p>
       <p style="font-size: 15px"><strong>Members</strong></p>
@@ -23,12 +25,14 @@
             </div>
           </li>
         <% end %>
-        <li class="user-item">
-          <div class="add-member-container">
-            <%= link_to "+", new_group_membership_path(@group), class: "add-member-btn", title: "Add member" %>
-            <div class="user-name" style="font-size: 11px;">Add member</div>
-          </div>
-        </li>
+        <% if current_user == @group.owner %>
+          <li class="user-item">
+            <div class="add-member-container">
+              <%= link_to "+", new_group_membership_path(@group), class: "add-member-btn", title: "Add member" %>
+              <div class="user-name" style="font-size: 11px;">Add member</div>
+            </div>
+          </li>
+        <%end%>
       </ul>
     </div>
   </div>
