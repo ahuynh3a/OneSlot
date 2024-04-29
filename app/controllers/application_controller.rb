@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Pundit
+
   before_action :configure_permitted_parameters, if: :devise_controller?
   before_action :authenticate_user!, unless: :landing?
   before_action :set_time_zone, if: :user_signed_in?

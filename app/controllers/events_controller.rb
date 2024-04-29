@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   include CalendarOwnershipConcern
   before_action :set_calendar
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :ensure_current_user_is_owner_of_calendar, only: [:show, :destroy, :update, :edit]
+  before_action :authorize_event, only: [:show, :destroy, :update, :edit]
 
   def index
     @events = @calendar.events
@@ -10,8 +10,8 @@ class EventsController < ApplicationController
 
   def show
   end
-  def new
 
+  def new
     @event = @calendar.events.new
   end
 
@@ -48,6 +48,10 @@ class EventsController < ApplicationController
 
   def set_event
     @event = @calendar.events.find(params[:id])
+  end
+
+  def authorize_event
+    authorize @event
   end
 
   def event_params

@@ -1,7 +1,7 @@
 class CalendarsController < ApplicationController
   include CalendarOwnershipConcern
   before_action :set_calendar, only: %i[ show edit update destroy ]
-  before_action :ensure_current_user_is_owner_of_calendar, only: [:destroy, :update, :edit]
+  before_action :authorize_calendar, only: [:show, :edit, :update, :destroy]
 
   def index
     @calendars = Calendar.all
@@ -57,6 +57,10 @@ class CalendarsController < ApplicationController
 
   def set_calendar
     @calendar = Calendar.find(params[:id])
+  end
+
+  def authorize_calendar
+    authorize @calendar
   end
 
   def calendar_params

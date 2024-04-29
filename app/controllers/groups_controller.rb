@@ -1,6 +1,7 @@
 class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
-  before_action :ensure_current_user_is_owner, only: [:destroy, :update, :edit]
+  before_action :authorize_group, only: [:show, :destroy, :update, :edit]
+
 
   def index
     @groups = Group.all
@@ -62,10 +63,13 @@ class GroupsController < ApplicationController
     @group = Group.find(params[:id])
   end
 
+
+  def authorize_group
+    authorize @group
+  end
+
   def ensure_current_user_is_owner
-    if current_user != @group.owner
-      redirect_back fallback_location: root_url, alert: "You do not have permission to modify this group. Please contact the owner if you believe this is an error."
-    end
+    authorize @group
   end
 
   def group_params
