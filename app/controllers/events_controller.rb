@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   include CalendarOwnershipConcern
   before_action :set_calendar
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_event, only: [:show, :destroy, :update, :edit]
+  before_action :authorize_event, only: [:show, :edit, :update, :destroy]  # Removed from :new and :create
 
   def index
     @events = @calendar.events
@@ -13,6 +13,7 @@ class EventsController < ApplicationController
 
   def new
     @event = @calendar.events.new
+    authorize @event  # Moved authorization directly into the action
   end
 
   def edit
@@ -20,8 +21,9 @@ class EventsController < ApplicationController
 
   def create
     @event = @calendar.events.build(event_params)
+    authorize @event  # Ensure authorization with the fully built event
     if @event.save
-      redirect_to calendar_event_path(@calendar, @event), notice: "Event was successfully."
+      redirect_to calendar_event_path(@calendar, @event), notice: "Event was successfully created."
     else
       render :new, status: :unprocessable_entity
     end
@@ -43,11 +45,19 @@ class EventsController < ApplicationController
   private
 
   def set_calendar
-    @calendar = Calendar.find(params[:calendar_id])
+    @calendar = Calendar.find_by(id: params[:calendar_id])
+    unless @calendar
+      redirect_to root_url, alert: "Calendar not found."
+      return
+    end
   end
 
   def set_event
-    @event = @calendar.events.find(params[:id])
+    @event = @calendar.events.find_by(id: params[:id])
+    unless @event
+      redirect_to calendar_path(@calendar), alert: "Event not found."
+      return
+    end
   end
 
   def authorize_event

@@ -6,6 +6,16 @@ class EventPolicy < ApplicationPolicy
     @event = event
   end
 
+  # Create and new actions use the same permission logic.
+  def create?
+    manage_event?
+  end
+
+  def new?
+    create?
+  end
+
+  # Show, update, edit, and destroy actions check if the user can manage the event.
   def show?
     manage_event?
   end
@@ -24,7 +34,8 @@ class EventPolicy < ApplicationPolicy
 
   private
 
+  # Manage event checks if the event is associated with a calendar and if the user is the owner.
   def manage_event?
-    user == event.calendar.owner
+    event.present? && event.calendar.present? && user == event.calendar.owner
   end
 end
