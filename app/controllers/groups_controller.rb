@@ -12,7 +12,7 @@ class GroupsController < ApplicationController
     @schedule_analyzer = ScheduleAnalyzer.new(@events)
 
     @breadcrumbs = [
-    {content: "Your Groups", href: user_groups_path(username: @group.owner.username)},
+    {content: "Your Groups", href: user_groups_path(username: current_user.username)},
     {content: @group.name, href: group_path(@group)}
   ]
 
