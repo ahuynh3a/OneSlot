@@ -11,6 +11,8 @@ OneSlot is a user-friendly app that streamlines scheduling for groups by helping
 
 ## Main Features
 
+https://github.com/ahuynh3a/OneSlot/assets/150502695/55da0c42-a43d-4795-8ae8-5ebf3da8c1e5
+
 ### Interactive In-App Calendar
 Upon signing in, users are greeted with an intuitive in-app calendar. This calendar functions like a conventional one, allowing users to add and manage their events. Days with scheduled events are highlighted with icons for quick visibility, and more details can be accessed by clicking on individual events.
 
