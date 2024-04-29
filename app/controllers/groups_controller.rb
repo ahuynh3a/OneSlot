@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
 
   def new
     @group = Group.new
+    authorize @group
   end
 
   def edit
@@ -29,6 +30,7 @@ class GroupsController < ApplicationController
     @group = Group.new(group_params)
     @group.users << current_user unless @group.user_ids.include?(current_user.id)
     @group.owner = current_user
+    authorize @group
 
     respond_to do |format|
       if @group.save
