@@ -1,5 +1,7 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
+gem 'bullet', group: 'development'
+
 gem "pundit"
 
 gem "simple_form"

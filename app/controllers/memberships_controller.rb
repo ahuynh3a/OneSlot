@@ -13,6 +13,13 @@ class MembershipsController < ApplicationController
   def new
     @membership = @group.memberships.build
     authorize @membership
+ 
+    @breadcrumbs = [
+      {content: "Your Groups", href: user_groups_path(username: @group.owner.username)},
+      {content: @group.name, href: group_path(@group)},
+      {content: "New Membership", href: new_group_membership_path(@group)}
+    ]
+
   end
 
   def edit

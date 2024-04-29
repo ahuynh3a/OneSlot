@@ -10,6 +10,12 @@ class GroupsController < ApplicationController
   def show
     @events = @group.member_events
     @schedule_analyzer = ScheduleAnalyzer.new(@events)
+
+    @breadcrumbs = [
+    {content: "Your Groups", href: user_groups_path(username: @group.owner.username)},
+    {content: @group.name, href: group_path(@group)}
+  ]
+
   end
 
   def new
