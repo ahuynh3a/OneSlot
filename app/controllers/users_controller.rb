@@ -7,11 +7,12 @@ class UsersController < ApplicationController
   end
 
   def events
-    @events = @user.events.upcoming
+    @events = @user.events.upcoming.page(params[:page]).per(5)
   end
 
   def groups
-    @groups = @user.groups.includes(:users)
+    @q = @user.groups.ransack(params[:q])
+    @groups = @q.result.includes(:users).distinct
   end
 
   private

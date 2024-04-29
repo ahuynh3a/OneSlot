@@ -305,8 +305,8 @@ body {
 }
 
 .group-card-link {
-  text-decoration: none; /* Removes the underline from links */
-  color: inherit; /* Inherits the color from the parent for consistency */
+  text-decoration: none; 
+  color: inherit; 
 }
 
 .group-card-title {
@@ -596,3 +596,59 @@ body {
 }
 
 
+/* General pagination container styling */
+
+.page-item {
+  margin: 2px;
+}
+
+.page-link {
+  color: #FF8B5E; 
+  background-color: #fff;
+  border: 1px solid #dee2e6;
+}
+
+.page-link:hover {
+  color: #FFBE91; 
+  text-decoration: none;
+  background-color: #e9ecef;
+  border-color: #dee2e6;
+}
+
+
+.page-item.active .page-link {
+  color: #fff;
+  background-color:#FFBE91; 
+  border-color: #FFBE91; 
+}
+
+.page-item.disabled .page-link {
+  color: #6c757d; 
+  pointer-events: none; 
+  background-color: #fff;
+  border-color: #dee2e6;
+}
+
+.page-link:focus, .page-link:active {
+  box-shadow: none;
+}
+
+
+
+/* Group Search Bar */
+
+.custom-small-form .input-group-text{
+  padding: 5px;
+}
+.custom-small-form .form-control{
+
+}
+
+
+.custom-small-form .form-control {
+  width: 100%;  
+}
+
+.search-btn{
+  margin: 5px;
+}

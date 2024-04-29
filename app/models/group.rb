@@ -25,6 +25,10 @@ class Group < ApplicationRecord
           where("LOWER(name) LIKE LOWER(:query) OR LOWER(description) LIKE LOWER(:query)", query: "%#{query}%")
         }
 
+  def self.ransackable_attributes(auth_object = nil)
+    %w[name description memberships_count created_at updated_at]
+  end
+
   def member_events
     Event.for_members(users.ids)
   end
