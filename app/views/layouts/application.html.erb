@@ -8,18 +8,14 @@
 
     <%= render partial: "shared/cdn_assets" %>
 
-
-   
-
     <%= stylesheet_link_tag 'bootstrap.min', media: 'all', 'data-turbolinks-track': 'reload' %>
-
 
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
 
     <%= javascript_importmap_tags %>
 
   </head>
-  
+
   <body class= "bg-main">
     <%= render partial: "shared/navbar" %>
 
@@ -31,6 +27,7 @@
       <%= render partial: "shared/flash", locals: { message: alert, css_class: "danger" } %>
     <% end %>
 
+    <%= render "shared/breadcrumbs" %>
     <%= yield %>
 
   </body>

@@ -1,14 +1,21 @@
 source "https://rubygems.org"
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
-gem 'simple_form'
+gem 'ransack'
+
+gem 'kaminari'
+
+gem 'bullet', group: 'development'
+
+gem "pundit"
+
+gem "simple_form"
 
 ruby "3.2.1"
 
 gem "simple_calendar"
 
-
-gem 'aws-sdk-s3', require: false
+gem "aws-sdk-s3", require: false
 
 # Bundle edge Rails instead: gem "rails", github: "rails/rails", branch: "main"
 gem "rails", "~> 7.0.4", ">= 7.0.4.3"
@@ -109,7 +116,7 @@ group :development, :test do
 end
 
 group :test do
-  gem "draft_matchers"#, "0.0.2"#path: "../../my_stuff/draft_matchers"
+  gem "draft_matchers" #, "0.0.2"#path: "../../my_stuff/draft_matchers"
   # gem "draft_matchers"
   gem "rspec-html-matchers"
   gem "webmock"
