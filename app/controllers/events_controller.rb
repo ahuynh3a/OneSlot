@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   def new
     @event = @calendar.events.new
-    authorize @event  # Moved authorization directly into the action
+    authorize @event 
   end
 
   def edit

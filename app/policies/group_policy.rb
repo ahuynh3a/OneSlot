@@ -10,6 +10,14 @@ class GroupPolicy < ApplicationPolicy
     user_is_owner? || group.users.include?(user)
   end
 
+  def create?
+    true
+  end
+
+  def new?
+    create?
+  end
+
   def update?
     user_is_owner?
   end
