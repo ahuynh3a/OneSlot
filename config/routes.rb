@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root "landing_pages#landing"
+  root "landing_page#landing"
 
   devise_for :users
 
