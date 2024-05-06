@@ -44,3 +44,6 @@ examples.txt
 /config/credentials/production.key
 
 .DS_Store
+
+#Ignore development key for decrypting credentials and more
+/config/credentials/development.key
