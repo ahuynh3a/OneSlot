@@ -1,3 +1,5 @@
+<%# small nitpick! Name this folder landing_page rather than landing_pages since there is only one landing page!%>
+<%# you could use a <section> to better organize your html%>
 <!--Div 1 --->
 <div class=" bg-main d-flex justify-content-center align-items-center div-with-full-vh">
   <div class="row d-flex justify-content-center align-items-center">
@@ -13,8 +15,10 @@
   </div>
 </div>
 
+<%# This div does not need to be numbered. A better comment would describe what this section is actually doing. %>
 <!--Div 2 --->
 
+<%# Add class and move inline styles to a stylesheet! %>
 <div class="bg-white div-with-full-vh" style="height: 100vh; display: flex; align-items: center; justify-content: center;">
   <div class="container">
     <div class="row justify-content-between align-items-center">
@@ -45,11 +49,14 @@
   </div>
 </div>
 
+<%# This div does not need to be numbered. A better comment would describe what this section is actually doing. %>
 <!--Div 3 --->
 <div class="bg-main div-with-full-vh d-flex flex-column justify-content-center align-items-center text-center">
+  <%# Add class and move inline styles to a stylesheet! %>
   <h2 class="roboto text-uppercase" style="font-size: 0.9rem; letter-spacing: 0.15em; color: #767676;">Happy Customers</h2>
   <h2 class="roboto" style="font-size: 1.5rem; font-weight: normal; margin-top: 0.5rem;">We deliver what we promise. See what clients are expressing about us.</h2>
   <hr style="width: 150px; border: 1px solid black; margin-bottom: 5rem;" />
+  <%# use consistent casing conventions %>
   <div id="carouselExampleControls" class="carousel slide" data-bs-ride="carousel">
     <div class="carousel-inner h-100 ">
       <div class="carousel-item active">
@@ -58,6 +65,7 @@
             <%= image_tag("7.png", alt: "first review", class:"card-img-top img-fluid rounded-circle", style:"width: 60px; height: 60px") %>
           </div>
           <div class="card-body text-center">
+            <%# Add class and move inline styles to a stylesheet! %>
             <p class="card-text" style="margin-bottom: 0; font-weight: bold;">David W.</p>
             <p class="card-text location-text" style="color: #aaa;">Houston, Texas</p>
             <div class="star-rating ">
@@ -140,6 +148,7 @@
   </div>
 </div>
 
+<%# This div does not need to be numbered. A better comment would describe what this section is actually doing. %>
 <!--Div 4--->
 
 <div class="bg-orange d-flex justify-content-center align-items-center flex-column" id="hero" style="padding: 20px; color: white; font-family: 'Roboto', sans-serif;">
