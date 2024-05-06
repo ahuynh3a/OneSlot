@@ -154,31 +154,22 @@ Thank you for contributing to **OneSlot**!
 ## Ruby Version Errors
 
 * The project is written using Ruby 3.1.1, if you encounter issues upon cloning, make sure you have Ruby version 3.1.1 in your environment.
+<hr>
 
+# Code Review
 
+**Important: Your development key should not be visible or pushed to your github repository**
 
+## Documentation
+- Incredibly thorough readme file; great job
 
+## Version Control
+- Good use of project board; however, you can utilize the functionality even more. The github project board can be used to create issues, pull requests, and new branches as well. 
+- Missing issues connected to pull requests
 
+## Code Hygiene
+- Good code clarity
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+## Backend
+- Your development.key file should be hidden! It should not be committed/accessible in your github repository
+- Good job adding pundit and implementing policies!
