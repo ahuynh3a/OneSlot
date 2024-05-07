@@ -2,7 +2,7 @@
 
 <div id="<%= dom_id event %>" class="card" style="border: none; border-radius: 20px;">
   <div class="card-body">
-      <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
       <h5 class="card-title" style="margin-bottom: 0;"><%= event.name %></h5>
       <%= link_to "...", edit_calendar_event_path(@calendar, @event), class: "edit-group-btn" %>
     </div>

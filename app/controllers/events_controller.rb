@@ -2,7 +2,7 @@ class EventsController < ApplicationController
   include CalendarOwnershipConcern
   before_action :set_calendar
   before_action :set_event, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_event, only: [:show, :edit, :update, :destroy]  # Removed from :new and :create
+  before_action :authorize_event, only: [:show, :edit, :update, :destroy]
 
   def index
     @events = @calendar.events
@@ -13,7 +13,7 @@ class EventsController < ApplicationController
 
   def new
     @event = @calendar.events.new
-    authorize @event 
+    authorize @event
   end
 
   def edit
@@ -21,7 +21,7 @@ class EventsController < ApplicationController
 
   def create
     @event = @calendar.events.build(event_params)
-    authorize @event  # Ensure authorization with the fully built event
+    authorize @event
     if @event.save
       redirect_to calendar_event_path(@calendar, @event), notice: "Event was successfully created."
     else

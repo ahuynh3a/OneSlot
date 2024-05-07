@@ -19,10 +19,6 @@ html * {
   font-family: 'Roboto', sans-serif;
 }
 
-.roboto {
-  font-family: 'Roboto', sans-serif;
-}
-
 .div-with-full-vh {
   width: 100vw;
   height: 100vh;
@@ -55,7 +51,6 @@ html * {
 }
 
 
-
 /* font color */
 .text-color-white {
   color: white
@@ -73,23 +68,20 @@ html * {
   margin: 2px;
 }
 
-
 .custom-btn:hover {
   background-color: #FFBE91;
   border-color: #FFBE91;
 }
 
-.submit-btn{
+.submit-btn {
   background-color: #FFBE91;
   border-color: #FFBE91;
 }
-
 
 .submit-btn:hover {
   background-color: #FF8B5E;
   border-color: #FF8B5E;
 }
-
 
 .nav-custom-btn {
   background-color: #F9F9F9;
@@ -103,8 +95,8 @@ html * {
   border-color: #FFBE91;
 }
 
-/*image*/
 
+/*image*/
 .custom-img-max {
   max-width: 100%;
   height: auto;
@@ -113,12 +105,9 @@ html * {
 
 .image-fixed-height {
   height: 200px;
-  /* Adjust this value based on your needs */
   object-fit: cover;
   width: 100%;
-  /* Ensures responsiveness */
 }
-
 
 .nav-icon {
   margin-right: 8px;
@@ -128,7 +117,6 @@ html * {
 body {
   padding-top: 80px;
 }
-
 
 /*user_list in group*/
 .user-list {
@@ -150,7 +138,6 @@ body {
 .user-container {
   position: relative;
   display: inline-block;
-  /* Contain the image and the remove button */
 }
 
 .profile-picture {
@@ -192,64 +179,59 @@ body {
   line-height: 30px;
 }
 
-  .edit-group-btn:hover {
-    background-color: #6c757d;
-    color: white;
-  }
+.edit-group-btn:hover {
+  background-color: #6c757d;
+  color: white;
+}
 
-  
-    /* adding members button */
-
-
-  .add-member-container {
-    display: flex; /* Enables flexbox for this container */
-    flex-direction: column; /* Stacks children vertically */
-
-    align-items: center; 
+/* adding members button */
+.add-member-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
   justify-content: center;
-  }
-  .add-member-btn {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    width: 50px;  /* Match your existing profile picture size */
-    height: 50px; /* Match your existing profile picture size */
-    border-radius: 50%; /* Makes it a circle */
-    background-color: transparent; /* Bootstrap primary color, or choose your own */
-    border: 1px solid #6c757d;
-    color: #6c757d; /* Text color */
-    font-size: 24px; /* Adjust the size of the "+" as needed */
-    text-decoration: none; /* Removes underline from the link */
-    cursor: pointer; /* Indicates the button is clickable */
-  }
-  
-  .add-member-btn:hover {
-    background-color: #6c757d;
-    color: white;
-  }
+}
 
-  .add-member-text {
-    font-size: 11px; /* Match the size used for user names */
-    margin-top: 5px; /* Space between the '+' button and the text */
-  }
+.add-member-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background-color: transparent;
+  border: 1px solid #6c757d;
+  color: #6c757d;
+  font-size: 24px;
+  text-decoration: none;
+  cursor: pointer;
+}
 
+.add-member-btn:hover {
+  background-color: #6c757d;
+  color: white;
+}
 
-    /* Time slots */
-    .time-slot {
-      font-size: 15px; /* Increase font size */
-      transition: transform 0.3s ease, color 0.3s ease; /* Smooth transition for hover effects */
-    }
-    
-    .time-slot:hover {
-      transform: scale(1.1); /* Makes the time slot pop out */
-      color: #FF8B5E; /* Changes text color on hover */
-    }
+.add-member-text {
+  font-size: 11px;
+  margin-top: 5px;
+}
+
+/* Time slots */
+.time-slot {
+  font-size: 15px;
+  transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.time-slot:hover {
+  transform: scale(1.1);
+  color: #FF8B5E;
+}
 
 
 
 /*modal-button*/
-
-.modal-button{
+.modal-button {
   margin-right: 10px;
   margin-top: 10px;
   margin-bottom: 10px;
@@ -271,16 +253,11 @@ body {
 .content-wrapper {
   display: flex;
   flex-direction: column;
-  align-items: center; /* Centers content horizontally */
-  justify-content: center; /* Centers content vertically if possible */
-  min-height: 100vh; /* Full viewport height */
-  text-align: center; /* Centers text elements */
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  text-align: center;
 }
-
-
-
-
-
 
 #groups {
   display: grid;
@@ -292,7 +269,7 @@ body {
   display: flex;
   flex-direction: column;
   height: 300px;
-  width: 100%;  /* Adjust based on your layout needs */
+  width: 100%;
   margin: 1rem;
   background-color: white;
   border-radius: 15px;
@@ -301,16 +278,16 @@ body {
 }
 
 .group-card:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .group-card-link {
-  text-decoration: none; 
-  color: inherit; 
+  text-decoration: none;
+  color: inherit;
 }
 
 .group-card-title {
-  margin: 0; /* Adjust margin as needed */
+  margin: 0;
   white-space: wrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -318,27 +295,27 @@ body {
 }
 
 .group-card-text {
-  display: block;  /* Block display for text control */
-  overflow: wrap;  /* Hides overflow to maintain the size */
-  text-overflow: ellipsis;  /* Adds ellipsis to truncated text */
-  white-space: clip;  /* Allows text wrapping */
+  display: block;
+  overflow: wrap;
+  text-overflow: ellipsis;
+  white-space: clip;
   font-size: 15px;
   color: #6c757d;
 }
 
 .group-card-body {
-  padding: 1rem; /* Padding within each card */
+  padding: 1rem;
   display: flex;
   flex-direction: column;
-  justify-content: space-between; /* Spreads out title and text */
+  justify-content: space-between;
   flex-grow: 1;
 }
 
 
 .group-members {
-  margin-top: auto;  /* Pushes members to the bottom */
+  margin-top: auto;
   display: flex;
-  overflow-x: auto;  /* Allows horizontal scrolling for member images */
+  overflow-x: auto;
   align-items: center;
   padding: 5px 0;
 }
@@ -348,29 +325,27 @@ body {
   height: 30px;
   border-radius: 50%;
   object-fit: cover;
-  margin-right: 5px; /* Space between images */
+  margin-right: 5px;
 }
-
-
 
 .create-group-button {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 300px; 
+  width: 300px;
   height: 300px;
   background-color: white;
   border-radius: 15px;
   text-decoration: none;
-  color: #6c757d; 
+  color: #6c757d;
   text-align: center;
   margin-left: 20px;
-  margin: 1rem ;
+  margin: 1rem;
 }
 
 .create-group-button:hover {
-  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3); 
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
 }
 
 .plus-symbol {
@@ -382,17 +357,13 @@ body {
   font-size: 15px;
 }
 
-
-
-
 .navbar .navbar-nav .dropdown-menu .dropdown-item:active,
 .navbar .navbar-nav .dropdown-menu .dropdown-item:focus {
-    background-color: #FFBE91; 
-    color: white;
+  background-color: #FFBE91;
+  color: white;
 }
 
 /* upcoming-events */
-
 #upcoming-events {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
@@ -419,13 +390,13 @@ body {
   text-decoration: none;
 }
 
-.upcoming-events-card-title{
+.upcoming-events-card-title {
   margin: 0;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
   margin-bottom: 12px;
-  color:#343a40;
+  color: #343a40;
 }
 
 .upcoming-events-card-text {
@@ -437,6 +408,7 @@ body {
   color: #343a40bf;
   margin-bottom: 10px;
 }
+
 .upcoming-events-card-body {
   padding: 20px;
   display: flex;
@@ -444,56 +416,6 @@ body {
   justify-content: space-between;
   flex-grow: 1;
 }
-
-
-.review-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-}
-
-#carouselExampleControls {
-  width: 80%; /* Adjust the width as needed */
-  max-width: 800px; /* Set a maximum width */
-  height: auto; /* Allow height to adjust based on content */
-}
-
-.review-title {
-  margin-bottom: 50px;
-  top: 100px;
-  font-weight: normal;
-  color: #aaa;
-  font-size: 15px;
-}
-
-.carousel-control-next,
-.carousel-control-prev {
-    filter: invert(100%);
-}
-
-.reviewer-name {
-  margin-bottom: 0;
-  font-weight: bold;
-}
-
-.reviewer-location {
-  color: #aaa; /* Adjust the color value as needed to get the desired faded look */
-}
-
-.location-text {
-  margin-bottom: 0;
-}
-
-.star-rating {
-  color: #f7ca16; 
-  font-size: 1rem; /* Adjust the size of the stars */
-  display: block;
-  margin-bottom: 10px;
-  margin-top: 10px;
-
-}
-
-
 
 .login-container {
   max-width: 360px;
@@ -544,7 +466,7 @@ body {
 .btn-primary {
   padding: 10px 20px;
   border: none;
-  border-radius: 50px; 
+  border-radius: 50px;
   background-color: #FF8B5E;
   color: white;
   font-size: 16px;
@@ -555,6 +477,7 @@ body {
   align-items: center;
   justify-content: center;
 }
+
 .btn-primary:hover {
   background-color: #FFBE91;
 }
@@ -573,8 +496,8 @@ body {
   margin-top: 25px;
 }
 
-
-.btn-primary, .btn-danger {
+.btn-primary,
+.btn-danger {
   padding: 10px;
   border: none;
   border-radius: 20px;
@@ -597,58 +520,154 @@ body {
 
 
 /* General pagination container styling */
-
 .page-item {
   margin: 2px;
 }
 
 .page-link {
-  color: #FF8B5E; 
+  color: #FF8B5E;
   background-color: #fff;
   border: 1px solid #dee2e6;
 }
 
 .page-link:hover {
-  color: #FFBE91; 
+  color: #FFBE91;
   text-decoration: none;
   background-color: #e9ecef;
   border-color: #dee2e6;
 }
 
-
 .page-item.active .page-link {
   color: #fff;
-  background-color:#FFBE91; 
-  border-color: #FFBE91; 
+  background-color: #FFBE91;
+  border-color: #FFBE91;
 }
 
 .page-item.disabled .page-link {
-  color: #6c757d; 
-  pointer-events: none; 
+  color: #6c757d;
+  pointer-events: none;
   background-color: #fff;
   border-color: #dee2e6;
 }
 
-.page-link:focus, .page-link:active {
+.page-link:focus,
+.page-link:active {
   box-shadow: none;
 }
 
 
 
 /* Group Search Bar */
-
-.custom-small-form .input-group-text{
+.custom-small-form .input-group-text {
   padding: 5px;
 }
-.custom-small-form .form-control{
-
-}
-
 
 .custom-small-form .form-control {
-  width: 100%;  
+  width: 100%;
 }
 
-.search-btn{
+.search-btn {
   margin: 5px;
+}
+
+/* landing page section 1: Hero  */
+.main-icon {
+  font-size: 75px;
+  color: #FF8B5E;
+}
+
+.step {
+  font-size: 1.25em;
+}
+
+/* landing page section 2: How it works */
+.how-it-works {
+  margin-bottom: 50px;
+  font-weight: normal;
+}
+
+.video-control {
+  width: 5000px;
+  max-width: 100%;
+  border-radius: 20px;
+  height: auto;
+}
+
+/* landing page section 3: testimonials */
+.happy-customers {
+  font-size: 0.9rem;
+  letter-spacing: 0.15em;
+  color: #767676;
+}
+
+.testimonial-slogan {
+  font-size: 1.5rem;
+  font-weight: normal;
+  margin-top: 0.5rem;
+}
+
+.simple-hr {
+  width: 150px;
+  border: 1px solid black;
+  margin-bottom: 5rem;
+}
+
+.testimonial-profile {
+  width: 60px;
+  height: 60px;
+}
+
+.review-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+#carousel-example-controls {
+  width: 80%;
+  max-width: 800px;
+  height: auto;
+}
+
+.review-title {
+  margin-bottom: 50px;
+  top: 100px;
+  font-weight: normal;
+  color: #aaa;
+  font-size: 15px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+  filter: invert(100%);
+}
+
+.reviewer-name {
+  margin-bottom: 0;
+  font-weight: bold;
+}
+
+.location-text {
+  margin-bottom: 0;
+  color: #aaa;
+}
+
+.star-rating {
+  color: #f7ca16;
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+/* landing page section 4: contact us */
+.section-four {
+  padding: 20px;
+  color: white;
+  font-family: 'Roboto', sans-serif;
+}
+
+.contact-us-link {
+  text-decoration: none;
+  color: white;
 }
