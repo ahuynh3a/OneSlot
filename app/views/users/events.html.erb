@@ -15,5 +15,5 @@
       <% end %>
     <% end %>
   </div>
-  <%= render 'shared/pagination', events: @events %>
+ <%= render 'shared/pagination', collection: @events, params: params.permit(:search, :filter, :sort) %>
 </div>
