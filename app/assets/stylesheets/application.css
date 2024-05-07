@@ -198,8 +198,7 @@ body {
   }
 
   
-    /* adding members button */
-
+ /* adding members button */
 
   .add-member-container {
     display: flex; /* Enables flexbox for this container */
@@ -351,8 +350,6 @@ body {
   margin-right: 5px; /* Space between images */
 }
 
-
-
 .create-group-button {
   display: flex;
   flex-direction: column;
@@ -444,55 +441,6 @@ body {
   justify-content: space-between;
   flex-grow: 1;
 }
-
-
-.review-card {
-  width: 100%;
-  max-width: 400px;
-  padding: 20px;
-}
-
-#carouselExampleControls {
-  width: 80%; /* Adjust the width as needed */
-  max-width: 800px; /* Set a maximum width */
-  height: auto; /* Allow height to adjust based on content */
-}
-
-.review-title {
-  margin-bottom: 50px;
-  top: 100px;
-  font-weight: normal;
-  color: #aaa;
-  font-size: 15px;
-}
-
-.carousel-control-next,
-.carousel-control-prev {
-    filter: invert(100%);
-}
-
-.reviewer-name {
-  margin-bottom: 0;
-  font-weight: bold;
-}
-
-.reviewer-location {
-  color: #aaa; /* Adjust the color value as needed to get the desired faded look */
-}
-
-.location-text {
-  margin-bottom: 0;
-}
-
-.star-rating {
-  color: #f7ca16; 
-  font-size: 1rem; /* Adjust the size of the stars */
-  display: block;
-  margin-bottom: 10px;
-  margin-top: 10px;
-
-}
-
 
 
 .login-container {
@@ -640,10 +588,6 @@ body {
 .custom-small-form .input-group-text{
   padding: 5px;
 }
-.custom-small-form .form-control{
-
-}
-
 
 .custom-small-form .form-control {
   width: 100%;  
@@ -651,4 +595,111 @@ body {
 
 .search-btn{
   margin: 5px;
+}
+
+
+
+/* landing page section 1: Hero  */
+.main-icon{
+  font-size: 75px; 
+  color: #FF8B5E;
+}
+
+.step{
+  font-size: 1.25em;
+}
+
+/* landing page section 2: How it works */
+.how-it-works{
+  margin-bottom: 50px; 
+  font-weight: normal;
+}
+
+.video-control{
+  width: 5000px; 
+  max-width: 100%; 
+  border-radius: 20px; 
+  height: auto;
+}
+
+/* landing page section 3: testimonials */
+.happy-customers{
+  font-size: 0.9rem; 
+  letter-spacing: 0.15em; 
+  color: #767676;
+}
+
+.testimonial-slogan{
+  font-size: 1.5rem; 
+  font-weight: normal; 
+  margin-top: 0.5rem;
+}
+
+.simple-hr{
+  width: 150px; 
+  border: 1px solid black; 
+  margin-bottom: 5rem;
+}
+
+.testimonial-profile{
+  width: 60px; 
+  height: 60px;
+}
+
+.review-card {
+  width: 100%;
+  max-width: 400px;
+  padding: 20px;
+}
+
+#carousel-example-controls {
+  width: 80%; 
+  max-width: 800px;
+  height: auto;
+}
+
+.review-title {
+  margin-bottom: 50px;
+  top: 100px;
+  font-weight: normal;
+  color: #aaa;
+  font-size: 15px;
+}
+
+.carousel-control-next,
+.carousel-control-prev {
+    filter: invert(100%);
+}
+
+.reviewer-name {
+  margin-bottom: 0; 
+  font-weight: bold;
+}
+
+.location-text {
+  margin-bottom: 0;
+  color: #aaa;
+}
+
+.star-rating {
+  color: #f7ca16; 
+  font-size: 1rem;
+  display: block;
+  margin-bottom: 10px;
+  margin-top: 10px;
+
+}
+
+
+/* landing page section 4: contact us */
+
+.section-four{
+  padding: 20px; 
+  color: white; 
+  font-family: 'Roboto', sans-serif;
+}
+
+.contact-us-link{
+  text-decoration: none;
+  color: white;
 }
