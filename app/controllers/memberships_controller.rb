@@ -1,7 +1,7 @@
 class MembershipsController < ApplicationController
   before_action :set_group
   before_action :set_membership, only: [:show, :edit, :update, :destroy]
-  before_action :authorize_membership, only:[:edit, :update, :destroy]
+  before_action :authorize_membership, only: [:edit, :update, :destroy]
 
   def index
     @memberships = Membership.all
@@ -13,13 +13,12 @@ class MembershipsController < ApplicationController
   def new
     @membership = @group.memberships.build
     authorize @membership
- 
-    @breadcrumbs = [
-      {content: "Your Groups", href: user_groups_path(username: @group.owner.username)},
-      {content: @group.name, href: group_path(@group)},
-      {content: "New Membership", href: new_group_membership_path(@group)}
-    ]
 
+    @breadcrumbs = [
+      { content: "Your Groups", href: user_groups_path(username: @group.owner.username) },
+      { content: @group.name, href: group_path(@group) },
+      { content: "New Membership", href: new_group_membership_path(@group) },
+    ]
   end
 
   def edit

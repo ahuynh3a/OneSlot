@@ -21,7 +21,7 @@ class UsersController < ApplicationController
     @user = User.find_by(username: params[:username])
     unless @user
       user_not_authorized
-      return 
+      return
     end
   end
 

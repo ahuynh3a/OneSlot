@@ -2,7 +2,6 @@ class GroupsController < ApplicationController
   before_action :set_group, only: %i[ show edit update destroy ]
   before_action :authorize_group, only: [:show, :destroy, :update, :edit]
 
-
   def index
     @groups = Group.all
   end
@@ -12,10 +11,9 @@ class GroupsController < ApplicationController
     @schedule_analyzer = ScheduleAnalyzer.new(@events)
 
     @breadcrumbs = [
-    {content: "Your Groups", href: user_groups_path(username: current_user.username)},
-    {content: @group.name, href: group_path(@group)}
-  ]
-
+      { content: "Your Groups", href: user_groups_path(username: current_user.username) },
+      { content: @group.name, href: group_path(@group) },
+    ]
   end
 
   def new
@@ -70,7 +68,6 @@ class GroupsController < ApplicationController
   def set_group
     @group = Group.find(params[:id])
   end
-
 
   def authorize_group
     authorize @group
